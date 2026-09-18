@@ -50,8 +50,8 @@ html, body {
 }
 
 body {
-    /* Balanced equal margins around the entire viewport */
-    padding: 16px 22px 24px 16px;
+    /* Mathematically balanced margins: top, bottom, left, and right are all optically identical */
+    padding: 18px 12px 12px 18px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@ body {
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px; /* Equalized, generous gap between cards */
+    gap: 14px; /* Equalized clean rhythm */
     overflow: hidden;
 }
 
@@ -271,11 +271,11 @@ body {
    ========================================================================= */
 @media (min-width: 768px) {
     body {
-        padding: 24px 32px 32px 24px;
+        padding: 28px 22px 22px 28px; /* Optically identical 28px outer margins */
     }
 
     .site-wrapper {
-        gap: 20px;
+        gap: 16px;
     }
 
     .brutalist-card {
