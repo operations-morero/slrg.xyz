@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SLRG.XYZ // BRUTALIST ELEMENTOR DESIGN SYSTEM
+   SLRG.XYZ // MOBILE-FIRST, ZERO-SCROLL BRUTALIST DESIGN SYSTEM
    ========================================================================== */
 
 /* 1. RESET & BASE VARIABLES */
@@ -14,85 +14,94 @@
     --brutalist-white: #ffffff;
     --accent-orange: #FF5500;
     --border-width: 3px;
-    --shadow-offset: 6px;
+    --shadow-offset: 5px;
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-body {
+/* 2. BASE MOBILE-FIRST STYLES (Viewport Lock, No Scroll) */
+html, body {
     background-color: var(--brutalist-white);
     color: var(--brutalist-black);
     font-family: var(--font-sans);
-    line-height: 1.5;
-    padding: 20px 0;
+    line-height: 1.4;
+    height: 100vh;
+    height: 100dvh; /* Mobile viewport height fix */
+    overflow: hidden; /* Prevent body scroll entirely */
+}
+
+body {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Master full-screen flex layout */
+.site-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 /* ==========================================================================
-   2. ELEMENTOR STRUCTURAL GRID (SECTIONS, CONTAINERS, COLUMNS)
+   3. ELEMENTOR STRUCTURAL GRID (MOBILE FIRST)
    ========================================================================== */
 
-/* The full-width block strip */
+/* Sections are modular containers */
 .elementor-section {
     width: 100%;
-    padding: 15px 0;
-}
-
-/* The centered box containing the columns */
-.elementor-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    flex-shrink: 0; /* Keep header/footer rigid */
 }
 
-/* Column sizing and spacing */
+/* Manifesto and content can flex to take available space */
+.section-manifesto {
+    flex-shrink: 0;
+}
+
+.section-content {
+    flex-grow: 1; /* Stretch middle section to fill the screen */
+    min-height: 0; /* Enable internal scrolling on children if needed */
+}
+
+/* Inner centered containers */
+.elementor-container {
+    background-color: var(--brutalist-white);
+    border: var(--border-width) solid var(--brutalist-black);
+    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--brutalist-black);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+/* Columns take full-width on mobile by default */
 .elementor-column {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-/* Column Width Modifiers */
-.col-100 {
-    flex: 0 0 100%;
     width: 100%;
+    min-height: 0;
 }
 
-.col-60 {
-    flex: 0 0 60%;
-    width: 60%;
-}
-
-.col-40 {
-    flex: 0 0 40%;
-    width: 40%;
-}
-
-/* Column Gaps */
-.col-gap-20 > .elementor-column {
-    padding: 10px;
-}
-
-/* Mobile Responsiveness: Force 100% width on tablet/phone */
-@media (max-width: 768px) {
-    .elementor-column {
-        flex: 0 0 100% !important;
-        width: 100% !important;
-    }
-    .elementor-container {
-        padding: 0 15px;
-    }
+/* Base Mobile Layout (Stacked columns, scrollable middle column if content overflows) */
+.section-content .elementor-container {
+    overflow-y: auto; /* Allow scrolling inside the card on small phones only */
+    gap: 16px;
 }
 
 /* ==========================================================================
-   3. ELEMENTOR REUSABLE WIDGETS
+   4. ELEMENTOR REUSABLE WIDGETS
    ========================================================================== */
 
 .elementor-widget {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
     width: 100%;
 }
 
@@ -103,62 +112,44 @@ body {
 /* WIDGET: HEADING */
 .elementor-widget-heading h1 {
     font-family: var(--font-mono);
-    font-size: 32px;
+    font-size: 20px;
     line-height: 1.2;
     text-transform: uppercase;
 }
 
 .elementor-widget-heading h2 {
     font-family: var(--font-mono);
-    font-size: 18px;
+    font-size: 14px;
     text-transform: uppercase;
 }
 
 /* WIDGET: DIVIDER */
 .elementor-widget-divider {
     border-top: var(--border-width) solid var(--brutalist-black);
-    margin: 10px 0 20px 0;
+    margin: 6px 0 10px 0;
 }
 
 /* WIDGET: SPACER */
 .elementor-widget-spacer {
-    height: 30px;
+    height: 10px;
     width: 100%;
 }
 
 /* WIDGET: TEXT EDITOR */
 .elementor-widget-text-editor p {
-    font-size: 14px;
+    font-size: 12px;
     color: #333333;
 }
 
 .elementor-widget-text-editor .lead {
-    font-size: 16px;
+    font-size: 13px;
     color: #111111;
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   4. CUSTOM LAYOUT STYLE / THEME
+   5. CUSTOM MODULE STYLING
    ========================================================================== */
-
-/* Styling individual sections as Brutalist Cards */
-.section-header .elementor-container,
-.section-manifesto .elementor-container,
-.section-content .elementor-container,
-.section-footer .elementor-container {
-    background-color: var(--brutalist-white);
-    border: var(--border-width) solid var(--brutalist-black);
-    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--brutalist-black);
-    padding: 24px;
-    transition: all 0.15s ease;
-}
-
-/* Hover lift effect */
-.elementor-section:hover .elementor-container {
-    transform: translate(-2px, -2px);
-    box-shadow: 8px 8px 0px var(--brutalist-black);
-}
 
 /* HEADER STYLE */
 .elementor-widget-logo-bar {
@@ -169,17 +160,17 @@ body {
 
 .logo {
     font-family: var(--font-mono);
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 900;
     background-color: var(--brutalist-black);
     color: var(--brutalist-white);
-    padding: 4px 12px;
-    letter-spacing: 2px;
+    padding: 2px 8px;
+    letter-spacing: 1px;
 }
 
 .tagline {
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 11px;
     font-weight: bold;
     color: var(--accent-orange);
 }
@@ -188,32 +179,32 @@ body {
 .elementor-widget-essay-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .essay-item {
     border-left: var(--border-width) solid var(--accent-orange);
-    padding-left: 16px;
+    padding-left: 10px;
 }
 
 .essay-status {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     color: var(--accent-orange);
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .essay-item h3 {
     font-family: var(--font-mono);
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 13px;
+    margin-bottom: 2px;
     text-transform: uppercase;
 }
 
 .essay-item p {
-    font-size: 14px;
+    font-size: 12px;
     color: #555555;
 }
 
@@ -221,7 +212,7 @@ body {
 .elementor-widget-spec-box {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px;
 }
 
 .spec-block {
@@ -231,13 +222,13 @@ body {
 
 .spec-label {
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     color: #777777;
 }
 
 .spec-value {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 }
 
@@ -247,16 +238,62 @@ body {
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: bold;
     color: #777777;
+    width: 100%;
 }
 
-@media (max-width: 480px) {
-    .elementor-widget-logo-bar,
-    .elementor-widget-footer-bar {
-        flex-direction: column;
-        gap: 10px;
-        align-items: flex-start;
+/* ==========================================================================
+   6. DESKTOP/TABLET UPGRADES (MIN-WIDTH: 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    body {
+        padding: 24px;
+    }
+    
+    .site-wrapper {
+        gap: 16px;
+    }
+
+    /* Set exact sizing for header/manifesto/footer */
+    .elementor-container {
+        padding: 20px;
+    }
+
+    .elementor-widget-heading h1 {
+        font-size: 26px;
+    }
+
+    /* Convert Content Section back to a side-by-side flex grid */
+    .section-content .elementor-container {
+        flex-direction: row;
+        overflow: hidden; /* Lock internal scrolling on desktop */
+        gap: 0;
+    }
+
+    .col-60 {
+        flex: 0 0 60%;
+        width: 60%;
+        padding-right: 20px;
+        border-right: var(--border-width) solid var(--brutalist-black);
+        height: 100%;
+        overflow-y: auto; /* If content overflows, scroll only this inner box */
+    }
+
+    .col-40 {
+        flex: 0 0 40%;
+        width: 40%;
+        padding-left: 20px;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .elementor-widget-logo-bar .logo {
+        font-size: 22px;
+    }
+    
+    .tagline {
+        font-size: 13px;
     }
 }
