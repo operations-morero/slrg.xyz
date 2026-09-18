@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=33">
+    <link rel="stylesheet" href="styles.css?v=34">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJTB69W5LK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-ZJTB69W5LK');
+    </script>
 </head>
 <body>
 
@@ -152,6 +162,11 @@
             } else {
                 applyTheme('dark');
                 localStorage.setItem('theme', 'dark');
+            }
+            if (typeof gtag === 'function') {
+                gtag('event', 'theme_change', {
+                    theme_mode: htmlElement.classList.contains('dark-mode') ? 'dark' : 'light'
+                });
             }
         });
 
@@ -313,6 +328,11 @@
                 audioPlayBtn.textContent = '❚❚ PAUSE';
                 audioPlayBtn.classList.add('is-active');
             }
+            if (typeof gtag === 'function') {
+                gtag('event', 'audio_play', {
+                    article_title: detailTitle.textContent
+                });
+            }
             playSentence(currentSentenceIdx);
         }
 
@@ -382,6 +402,15 @@
 
                 // 1. Terminal Blink effect
                 this.classList.add('item-blinking');
+
+                // Fire Google Analytics event for article reading
+                if (typeof gtag === 'function') {
+                    gtag('event', 'select_content', {
+                        content_type: 'article',
+                        item_id: articleId,
+                        item_name: articleData.title
+                    });
+                }
 
                 setTimeout(() => {
                     this.classList.remove('item-blinking');
