@@ -100,13 +100,16 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    flex-wrap: nowrap;
+    gap: 8px;
 }
 
 .logo-group {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
+    min-width: 0;
 }
 
 .logo {
@@ -117,6 +120,7 @@ body {
     background-color: transparent;
     letter-spacing: 1px;
     line-height: 1;
+    flex-shrink: 0;
 }
 
 .tagline {
@@ -125,6 +129,7 @@ body {
     font-weight: 700;
     color: var(--accent-green);
     letter-spacing: 0.5px;
+    white-space: nowrap;
 }
 
 .theme-toggle-btn {
@@ -137,6 +142,8 @@ body {
     cursor: pointer;
     padding: 2px 4px;
     outline: none;
+    white-space: nowrap; /* Prevents [ ☼ ] / [ ☽ ] wrapping on mobile */
+    flex-shrink: 0;
 }
 
 .theme-toggle-btn:hover {
