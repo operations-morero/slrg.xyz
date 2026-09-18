@@ -205,19 +205,16 @@ body {
     overflow: hidden;
 }
 
-/* GLOBAL SLIM GREEN BRUTALIST SCROLLBAR (SHARP, NO ARROWS, EQUAL MARGINS) */
-* {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-green) transparent;
-}
-
+/* GLOBAL SLIM GREEN BRUTALIST SCROLLBAR (SHARP ZERO-RADIUS, ZERO ARROWS) */
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 3px !important;
+    height: 3px !important;
 }
 
 /* REMOVE UP/DOWN ARROWS COMPLETELY */
 ::-webkit-scrollbar-button,
+::-webkit-scrollbar-button:start,
+::-webkit-scrollbar-button:end,
 ::-webkit-scrollbar-button:single-button,
 ::-webkit-scrollbar-button:vertical:decrement,
 ::-webkit-scrollbar-button:vertical:increment,
@@ -228,13 +225,14 @@ body {
     height: 0 !important;
     background: transparent !important;
     border: none !important;
+    font-size: 0 !important;
 }
 
 ::-webkit-scrollbar-track,
 ::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar-corner {
     background: transparent !important;
-    margin: 16px 0; /* Equal top and bottom track margin */
+    margin: 12px 0 !important;
     border: none !important;
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
@@ -482,15 +480,17 @@ body {
     gap: 8px;
     font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 400;
     letter-spacing: 0.5px;
     flex-wrap: wrap;
+    color: var(--accent-green);
 }
 
 .meta-sep {
     color: var(--accent-green);
     font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     user-select: none;
 }
 
@@ -498,18 +498,18 @@ body {
 .meta-val-tags {
     font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
-    color: var(--text-color);
+    color: var(--accent-green);
 }
 
-/* WHITE TAGS WITHOUT BRACKETS */
+/* GREEN UNBOLDED TAGS WITHOUT BRACKETS */
 .tag-badge {
     display: inline-block;
-    color: var(--text-color);
+    color: var(--accent-green);
     font-family: var(--font-mono);
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 0.5px;
 }
 
@@ -525,6 +525,8 @@ body {
     line-height: 1.7;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 16px, black calc(100% - 16px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0px, black 16px, black calc(100% - 16px), transparent 100%);
 }
 
 .detail-body-paragraphs p {

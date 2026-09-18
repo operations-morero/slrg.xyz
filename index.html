@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=40">
+    <link rel="stylesheet" href="styles.css?v=38">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V56MF1NBR6"></script>
@@ -85,12 +85,12 @@
                     <div class="detail-header-nav">
                         <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
                         
-                        <!-- BRUTALIST AUDIO CONTROLS (SINGLE WRAPPED DECK) -->
+                        <!-- BRUTALIST AUDIO CONTROLS (OLD SCHOOL RETRO TAPE DECK) -->
                         <div class="audio-deck-pill">
                             <span class="pill-bracket">[</span>
-                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind">⟲</button>
-                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">▷ PLAY</button>
-                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward">⟳</button>
+                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind">◁◁</button>
+                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">▷</button>
+                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Fast Forward">▷▷</button>
                             <span class="pill-bracket">]</span>
                         </div>
                     </div>
@@ -324,7 +324,7 @@
             isAudioPlaying = true;
             isAudioPaused = false;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '❚❚ PAUSE';
+                audioPlayBtn.textContent = '❚❚';
                 audioPlayBtn.classList.add('is-active');
             }
             if (typeof gtag === 'function') {
@@ -342,7 +342,7 @@
             }
             isAudioPaused = true;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '▷ RESUME';
+                audioPlayBtn.textContent = '▷';
                 audioPlayBtn.classList.remove('is-active');
             }
         }
@@ -355,7 +355,7 @@
             isAudioPaused = false;
             currentSentenceIdx = 0;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '▷ PLAY';
+                audioPlayBtn.textContent = '▷';
                 audioPlayBtn.classList.remove('is-active');
             }
         }
