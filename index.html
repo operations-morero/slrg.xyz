@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=34">
+    <link rel="stylesheet" href="styles.css?v=40">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJTB69W5LK"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V56MF1NBR6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-ZJTB69W5LK');
+      gtag('config', 'G-V56MF1NBR6');
     </script>
 </head>
 <body>
@@ -57,17 +57,19 @@
                     <article class="article-item selectable" data-article-id="01">
                         <div class="article-header-row">
                             <span class="article-date">2026.09.18</span>
-                            <span class="article-tags-preview">#AUTISM &nbsp; #CONSTRUCTION</span>
+                            <span class="article-tags-preview">#AUTISM #CONSTRUCTION</span>
                         </div>
                         <h2 class="article-title">01 // Autism in Plain Sight</h2>
                         <p class="article-desc">Performing at a high level, visualising through pictures, and managing sensory burnout while hiding something hidden.</p>
                     </article>
 
+                    <div class="article-divider"></div>
+
                     <!-- ARTICLE 02 -->
                     <article class="article-item selectable" data-article-id="02">
                         <div class="article-header-row">
-                            <span class="article-date">[ 2026.09.18 ]</span>
-                            <span class="article-tags-preview">#SYSTEMS &nbsp; #ENERGY</span>
+                            <span class="article-date">2026.09.18</span>
+                            <span class="article-tags-preview">#SYSTEMS #ENERGY</span>
                         </div>
                         <h2 class="article-title">02 // The Four Burners Theory</h2>
                         <p class="article-desc">Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was also a lie.</p>
@@ -86,26 +88,21 @@
                         <!-- BRUTALIST AUDIO CONTROLS (SINGLE WRAPPED DECK) -->
                         <div class="audio-deck-pill">
                             <span class="pill-bracket">[</span>
-                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind 10 seconds">⟲ -10S</button>
+                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind">⟲</button>
                             <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">▷ PLAY</button>
-                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward 10 seconds">⟳ +10S</button>
+                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward">⟳</button>
                             <span class="pill-bracket">]</span>
                         </div>
                     </div>
 
                     <h2 id="detail-title" class="detail-main-title">ARTICLE TITLE</h2>
 
-                    <!-- RAW METADATA BLOCK -->
+                    <!-- RAW METADATA LINE (SINGLE ROW WITH NO LABELS) -->
                     <div class="raw-metadata-box">
-                        <div class="metadata-grid">
-                            <div class="meta-row">
-                                <span class="meta-key">TIMESTAMP:</span>
-                                <span id="meta-timestamp" class="meta-val">2026-09-18T16:00:00Z</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-key">TAGS:</span>
-                                <span id="meta-tags" class="meta-val-tags"></span>
-                            </div>
+                        <div class="meta-inline-row">
+                            <span id="meta-timestamp" class="meta-val">2026-09-18T16:00:00Z</span>
+                            <span class="meta-sep">//</span>
+                            <span id="meta-tags" class="meta-val-tags"></span>
                         </div>
                     </div>
                 </div>
@@ -202,12 +199,14 @@
 
                     <p>I've learnt that Construction is full of people like me. Performing at a high level and managing something hidden at the same time.</p>
 
-                    <p>[ READ ORIGINAL ON DIGITAL CONSTRUCTION PLUS ↗ ](https://digitalconstructionplus.com/autism-in-construction-achieving-yet-hiding-in-plain-sight/)</p>
+                    <div class="article-source-bar">
+                        <a href="https://digitalconstructionplus.com/autism-in-construction-achieving-yet-hiding-in-plain-sight/" target="_blank" rel="noopener noreferrer" class="article-source-link">[  READ ORIGINAL ON DIGITAL CONSTRUCTION PLUS ↗  ]</a>
+                    </div>
                 `
             },
             "02": {
                 title: "02 // The Four Burners Theory",
-                date: "[ 2026.09.18 ]",
+                date: "2026.09.18",
                 timestamp: "2026-09-18T16:00:00Z",
                 tags: ["#SYSTEMS","#ENERGY"],
                 content: `
@@ -422,7 +421,7 @@
 
                     // Enforce max 2 tags strictly without brackets
                     const activeTags = (articleData.tags || []).slice(0, 2);
-                    metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">${t}</span>`).join(' &nbsp; ');
+                    metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">${t}</span>`).join(' ');
 
                     // 3. Initialize Audio Sentences
                     prepareAudioText();

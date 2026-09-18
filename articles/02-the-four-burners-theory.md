@@ -1,7 +1,7 @@
 ---
 id: "02"
 title: "02 // The Four Burners Theory"
-date: "[ 2026.09.18 ]"
+date: "2026.09.18"
 timestamp: "2026-09-18T16:00:00Z"
 tags:
   - "#SYSTEMS"

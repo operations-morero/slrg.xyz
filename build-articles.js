@@ -50,22 +50,40 @@ function parseMarkdownFile(filePath) {
     }
 
     // Process body paragraphs
-    const paragraphs = bodyRaw
+    const rawParagraphs = bodyRaw
         .split(/\r?\n\r?\n+/)
         .map(p => p.trim())
         .filter(p => p.length > 0 && !p.startsWith('#') && !p.startsWith('---'));
 
-    let htmlContent = paragraphs.map(p => `                    <p>${p.replace(/\r?\n/g, ' ')}</p>`).join('\n\n');
+    const htmlParagraphs = [];
+    let detectedSourceLink = meta.source_url || meta.source_link || null;
+    let detectedSourceTitle = meta.source_title || null;
 
-    if (meta.source_link) {
-        const title = meta.source_title || 'READ ORIGINAL SOURCE';
-        htmlContent += `\n\n                    <div class="article-source-bar">\n                        <a href="${meta.source_link}" target="_blank" rel="noopener noreferrer" class="article-source-link">[ ${title.toUpperCase()} ↗ ]</a>\n                    </div>`;
+    for (const p of rawParagraphs) {
+        const linkMatch = p.match(/^\[(.*?)\]\((https?:\/\/[^\s)]+)\)$/);
+        if (linkMatch) {
+            detectedSourceTitle = linkMatch[1].replace(/^\[\s*|\s*\]$/g, '');
+            detectedSourceLink = linkMatch[2];
+        } else {
+            let formatted = p.replace(/\r?\n/g, ' ')
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+            htmlParagraphs.push(`                    <p>${formatted}</p>`);
+        }
+    }
+
+    let htmlContent = htmlParagraphs.join('\n\n');
+
+    if (detectedSourceLink) {
+        const title = detectedSourceTitle || 'READ ORIGINAL SOURCE ↗';
+        const displayTitle = title.startsWith('[') ? title : `[ ${title} ]`;
+        htmlContent += `\n\n                    <div class="article-source-bar">\n                        <a href="${detectedSourceLink}" target="_blank" rel="noopener noreferrer" class="article-source-link">${displayTitle}</a>\n                    </div>`;
     }
 
     return {
         id: meta.id || path.basename(filePath, '.md'),
         title: meta.title || 'UNTITLED',
-        date: meta.date || '[ 2026.09.18 ]',
+        date: meta.date || '2026.09.18',
         timestamp: meta.timestamp || new Date().toISOString(),
         tags: Array.isArray(meta.tags) ? meta.tags.slice(0, 2) : [],
         summary: meta.summary || '',
@@ -106,7 +124,7 @@ function syncAndBuild() {
 
     // 3. Generate HTML Archive list
     const listHtml = articles.map(art => {
-        const tagsPreview = art.tags.join(' &nbsp; ');
+        const tagsPreview = art.tags.join(' ');
         return `                    <!-- ARTICLE ${art.id} -->
                     <article class="article-item selectable" data-article-id="${art.id}">
                         <div class="article-header-row">
@@ -116,7 +134,7 @@ function syncAndBuild() {
                         <h2 class="article-title">${art.title}</h2>
                         <p class="article-desc">${art.summary}</p>
                     </article>`;
-    }).join('\n\n');
+    }).join('\n\n                    <div class="article-divider"></div>\n\n');
 
     // 4. Generate JavaScript DB
     const dbEntries = articles.map(art => {
