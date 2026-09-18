@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 
     <!-- SITE WRAPPER (Locks layout to screen dimensions) -->
     <div class="site-wrapper">
         
-        <!-- PANEL 1: INTEGRATED HEADER & HERO CARD -->
-        <header class="brutalist-card panel-header">
+        <!-- PANEL 1: INTEGRATED HEADER & HERO CARD (Collapsible) -->
+        <header id="main-header" class="brutalist-card panel-header">
             
             <!-- TOP BAR: Logo, Tagline, Theme Toggle -->
             <div class="header-top-bar">
@@ -25,12 +25,14 @@
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">[ ☼ ]</button>
             </div>
 
-            <div class="header-divider"></div>
+            <!-- COLLAPSIBLE HERO SECTION -->
+            <div id="hero-collapse-wrapper">
+                <div class="header-divider"></div>
 
-            <!-- THE HERO CONTENT -->
-            <div class="hero-content">
-                <h1 class="hero-large-text">WORDS ARE MESSY AND FULL OF INTERPRETATION.</h1>
-                <p class="hero-title">Geometry is a clean chaos. I recover through creation. Inner thoughts of an AuDHD developer, creator, and structural minimalist reclaiming bandwidth.</p>
+                <div class="hero-content">
+                    <h1 class="hero-large-text">WORDS ARE MESSY AND FULL OF INTERPRETATION.</h1>
+                    <p class="hero-title">Geometry is a clean chaos. I recover through creation. Inner thoughts of an AuDHD structural minimalist reclaiming bandwidth.</p>
+                </div>
             </div>
 
         </header>
@@ -46,7 +48,7 @@
                     <article class="article-item selectable" data-article-id="art-1">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.18 ]</span>
-                            <span class="article-action">[ READ LOG ↗ ]</span>
+                            <span class="article-tags-preview">[ #SYSTEMS #BURNERS ]</span>
                         </div>
                         <h2 class="article-title">01 // The Four Burners Theory</h2>
                         <p class="article-desc">The physical and mental math of turning off the family burner to protect your health, work, and sanity.</p>
@@ -58,7 +60,7 @@
                     <article class="article-item selectable" data-article-id="art-2">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.12 ]</span>
-                            <span class="article-action">[ VIEW ART ↗ ]</span>
+                            <span class="article-tags-preview">[ #ART #GEOMETRY ]</span>
                         </div>
                         <h2 class="article-title">02 // Spatial Geometry & Noise Isolation</h2>
                         <p class="article-desc">Visual structural experiment. Raw ASCII spatial mapping and nervous system bandwidth preservation.</p>
@@ -70,7 +72,7 @@
                     <article class="article-item selectable" data-article-id="art-3">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.04 ]</span>
-                            <span class="article-action">[ READ LOG ↗ ]</span>
+                            <span class="article-tags-preview">[ #AUDHD #EXECUTIVE ]</span>
                         </div>
                         <h2 class="article-title">03 // AuDHD and the Cost of Carrying</h2>
                         <p class="article-desc">How carrying 80% of a stagnation system causes total executive burnout, and how to execute a clean decoupling.</p>
@@ -90,7 +92,7 @@
                 <div class="article-detail-content">
                     <h2 id="detail-title" class="detail-main-title">ARTICLE TITLE</h2>
 
-                    <!-- RAW METADATA BLOCK -->
+                    <!-- RAW METADATA BLOCK WITH DYNAMIC TAGS -->
                     <div class="raw-metadata-box">
                         <div class="metadata-heading">[ METADATA ]</div>
                         <div class="metadata-grid">
@@ -103,6 +105,10 @@
                                 <span id="meta-timestamp" class="meta-val">2026-09-18T16:00:00Z</span>
                             </div>
                             <div class="meta-row">
+                                <span class="meta-key">TAGS:</span>
+                                <span id="meta-tags" class="meta-val-tags"></span>
+                            </div>
+                            <div class="meta-row">
                                 <span class="meta-key">FORMAT:</span>
                                 <span id="meta-format" class="meta-val">ESSAY // SYSTEMS ARCHITECTURE</span>
                             </div>
@@ -113,7 +119,7 @@
                         </div>
                     </div>
 
-                    <!-- DYNAMIC ARTICLE BODY COPY -->
+                    <!-- DYNAMIC ARTICLE BODY COPY (Strict Black/White) -->
                     <div id="detail-body-text" class="detail-paragraphs">
                         <!-- Content Injected via Script -->
                     </div>
@@ -132,7 +138,7 @@
 
     </div>
 
-    <!-- SCRIPT FOR DUAL-THEME & ARTICLE BLINK-AND-LOAD SELECTION -->
+    <!-- SCRIPT FOR DUAL-THEME, HERO COLLAPSE, & TAGS VIEWER -->
     <script>
         /* ==========================================================================
            1. THEME TOGGLE LOGIC
@@ -171,7 +177,7 @@
         });
 
         /* ==========================================================================
-           2. DUMMY ARTICLES DATA STORE
+           2. DUMMY ARTICLES DATA STORE WITH TAGS
            ========================================================================== */
         const articlesDB = {
             'art-1': {
@@ -179,6 +185,7 @@
                 date: '[ 2026.09.18 ]',
                 metaId: '#001-4BURNERS',
                 timestamp: '2026-09-18T16:00:00Z',
+                tags: ['#FOUR-BURNERS', '#SYSTEMS', '#RECOVERY', '#UNMASKED'],
                 format: 'ESSAY // RECOVERY ARCHITECTURE',
                 status: 'UNMASKED // RECLAIMED',
                 content: `
@@ -193,6 +200,7 @@
                 date: '[ 2026.09.12 ]',
                 metaId: '#002-SPATIAL-ART',
                 timestamp: '2026-09-12T10:30:00Z',
+                tags: ['#ASCII-ART', '#GEOMETRY', '#SPATIAL', '#RANDOM-CHAOS'],
                 format: 'ASCII / VECTOR CONCEPT ART',
                 status: 'EXPERIMENTAL // RAW',
                 content: `
@@ -219,6 +227,7 @@
                 date: '[ 2026.09.04 ]',
                 metaId: '#003-AUDHD-BURN',
                 timestamp: '2026-09-04T08:15:00Z',
+                tags: ['#AUDHD', '#BURNOUT', '#EXECUTIVE-FUNCTION', '#BOUNDARIES'],
                 format: 'ESSAY // EXECUTIVE FUNCTION',
                 status: 'DRAFT // DECLASSIFIED',
                 content: `
@@ -229,21 +238,23 @@
         };
 
         /* ==========================================================================
-           3. BLINK & LOAD SELECTION INTERACTION
+           3. BLINK, HERO COLLAPSE, & LOAD SELECTION
            ========================================================================== */
         const listView = document.getElementById('articles-list-view');
         const detailView = document.getElementById('article-detail-view');
         const backBtn = document.getElementById('back-btn');
+        const heroWrapper = document.getElementById('hero-collapse-wrapper');
 
         const detailTitle = document.getElementById('detail-title');
         const detailDate = document.getElementById('detail-date');
         const metaId = document.getElementById('meta-id');
         const metaTimestamp = document.getElementById('meta-timestamp');
+        const metaTags = document.getElementById('meta-tags');
         const metaFormat = document.getElementById('meta-format');
         const metaStatus = document.getElementById('meta-status');
         const detailBody = document.getElementById('detail-body-text');
 
-        // Handle item selection with brutalist blink
+        // Handle item selection with brutalist blink & hero collapse
         document.querySelectorAll('.selectable').forEach(item => {
             item.addEventListener('click', function() {
                 const articleId = this.getAttribute('data-article-id');
@@ -252,13 +263,9 @@
 
                 // 1. Terminal Blink effect
                 this.classList.add('item-blinking');
-                const actionSpan = this.querySelector('.article-action');
-                const originalText = actionSpan.textContent;
-                actionSpan.textContent = '[ LOADING... ]';
 
                 setTimeout(() => {
                     this.classList.remove('item-blinking');
-                    actionSpan.textContent = originalText;
 
                     // 2. Populate Detail View
                     detailTitle.textContent = articleData.title;
@@ -269,22 +276,30 @@
                     metaStatus.textContent = articleData.status;
                     detailBody.innerHTML = articleData.content;
 
-                    // 3. Swap Views
+                    // Populate Tags
+                    metaTags.innerHTML = articleData.tags.map(t => `<span class="tag-badge">[ ${t} ]</span>`).join(' ');
+
+                    // 3. Collapse Hero to maximize reading space
+                    heroWrapper.classList.add('hero-collapsed');
+
+                    // 4. Swap Views
                     listView.classList.add('hidden');
                     detailView.classList.remove('hidden');
                     detailView.scrollTop = 0;
-                }, 220); // 220ms tactile blink duration
+                }, 200);
             });
         });
 
-        // Handle Back Button
+        // Handle Back Button & Hero Expand
         backBtn.addEventListener('click', () => {
             backBtn.textContent = '[ LOADING... ]';
             setTimeout(() => {
                 backBtn.textContent = '[ < BACK TO ARCHIVE ]';
                 detailView.classList.add('hidden');
                 listView.classList.remove('hidden');
-            }, 120);
+                // Re-expand hero
+                heroWrapper.classList.remove('hero-collapsed');
+            }, 100);
         });
     </script>
 

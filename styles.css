@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SLRG.XYZ // DUAL-THEME BRUTALIST DESIGN SYSTEM (V12)
+   SLRG.XYZ // DUAL-THEME BRUTALIST DESIGN SYSTEM (V13)
    ========================================================================= */
 
 /* 0. GOOGLE FONTS IMPORT */
@@ -84,14 +84,15 @@ body {
 }
 
 /* ==========================================================================
-   4. CARD 1: HEADER & HERO
+   4. CARD 1: HEADER & HERO (WITH AUTO-COLLAPSE)
    ========================================================================= */
 .panel-header {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    gap: 12px;
-    padding: 18px 22px;
+    gap: 10px;
+    padding: 16px 20px;
+    transition: padding 0.2s ease;
 }
 
 .header-top-bar {
@@ -134,12 +135,24 @@ body {
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 2px 4px;
     outline: none;
 }
 
 .theme-toggle-btn:hover {
     color: var(--accent-green);
+}
+
+/* Collapsible Hero Section */
+#hero-collapse-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+#hero-collapse-wrapper.hero-collapsed {
+    display: none !important; /* Fully collapses to maximize reading space */
 }
 
 .header-divider {
@@ -172,14 +185,15 @@ body {
 }
 
 /* ==========================================================================
-   5. CARD 2: MAIN BODY (INDEX & DETAIL VIEWS)
+   5. CARD 2: MAIN BODY (CLEAN POSITIONED SCROLLBAR)
    ========================================================================= */
 .panel-body {
     flex: 1 1 0;
     min-height: 0;
     display: flex;
     flex-direction: column;
-    padding: 20px 22px;
+    /* Clean internal padding: left is generous, right leaves space for clean scrollbar */
+    padding: 18px 8px 18px 20px;
     overflow: hidden;
 }
 
@@ -187,12 +201,16 @@ body {
     flex: 1 1 0;
     overflow-y: auto;
     min-height: 0;
-    padding-right: 6px;
+    padding-right: 12px; /* Space between text and scrollbar */
     overscroll-behavior: contain;
 }
 
+/* Crisp Scrollbar aligned to card edge */
 .body-scroll-area::-webkit-scrollbar {
-    width: 5px;
+    width: 4px;
+}
+.body-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
 }
 .body-scroll-area::-webkit-scrollbar-thumb {
     background-color: var(--accent-green);
@@ -214,7 +232,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
-    padding: 4px;
+    padding: 4px 2px;
     transition: background-color 0.1s ease;
 }
 
@@ -222,7 +240,6 @@ body {
     cursor: pointer;
 }
 
-/* Brutalist Selection Blink Effect */
 .article-item.item-blinking {
     background-color: var(--accent-green) !important;
     color: #ffffff !important;
@@ -235,6 +252,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
 }
 
 .article-date {
@@ -245,11 +264,11 @@ body {
     letter-spacing: 0.5px;
 }
 
-.article-action {
+.article-tags-preview {
     font-family: var(--font-mono);
-    font-size: 10.5px;
+    font-size: 10px;
     font-weight: 700;
-    color: var(--accent-green);
+    color: var(--muted-color);
     letter-spacing: 0.5px;
 }
 
@@ -283,28 +302,29 @@ body {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1.5px solid var(--border-color);
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     margin-bottom: 16px;
 }
 
+/* 1. RAW UNBOXED BACK BUTTON */
 .nav-back-btn {
     background: transparent;
-    border: 1.5px solid var(--border-color);
-    color: var(--text-color);
+    border: none;
+    padding: 0;
+    color: var(--accent-green); /* Raw text button */
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
     cursor: pointer;
-    padding: 4px 10px;
     letter-spacing: 0.5px;
+    outline: none;
 }
 
 .nav-back-btn:hover {
-    background-color: var(--accent-green);
-    color: #ffffff;
-    border-color: var(--accent-green);
+    text-decoration: underline;
 }
 
+/* 2. GREEN ARTICLE DETAIL TITLE */
 .detail-main-title {
     font-family: var(--font-mono);
     font-size: 18px;
@@ -312,6 +332,8 @@ body {
     text-transform: uppercase;
     line-height: 1.3;
     margin-bottom: 14px;
+    color: var(--accent-green); /* Green Title */
+    letter-spacing: -0.2px;
 }
 
 /* RAW METADATA BLOCK */
@@ -344,6 +366,7 @@ body {
     gap: 8px;
     font-family: var(--font-mono);
     font-size: 10.5px;
+    flex-wrap: wrap;
 }
 
 .meta-key {
@@ -357,7 +380,20 @@ body {
     color: var(--text-color);
 }
 
-/* DETAIL PARAGRAPHS */
+.meta-val-tags {
+    color: var(--accent-green);
+    font-weight: 700;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+}
+
+.tag-badge {
+    display: inline-block;
+    margin-right: 4px;
+    color: var(--accent-green);
+}
+
+/* 6. STRICT MONOCHROMATIC ARTICLE PARAGRAPHS (NO BODY TEXT COLORS) */
 .detail-paragraphs {
     display: flex;
     flex-direction: column;
@@ -367,13 +403,13 @@ body {
 }
 
 .detail-paragraphs p {
-    color: var(--text-color);
+    color: var(--text-color); /* Strict black/white */
     opacity: 0.92;
 }
 
 .detail-paragraphs strong {
     font-weight: 700;
-    color: var(--accent-green);
+    color: var(--text-color); /* Strict black/white, no green text highlights */
 }
 
 /* ASCII ART EXPERIMENT BLOCK */
@@ -403,7 +439,7 @@ body {
     color: var(--text-color);
     opacity: 0.75;
     flex-shrink: 0;
-    padding: 12px 22px;
+    padding: 12px 20px;
 }
 
 /* ==========================================================================
@@ -419,7 +455,7 @@ body {
     }
 
     .brutalist-card {
-        padding: 22px 26px;
+        padding: 20px 24px;
     }
 
     .logo {
@@ -443,7 +479,7 @@ body {
     }
 
     .detail-main-title {
-        font-size: 20px;
+        font-size: 21px;
     }
 
     .detail-paragraphs {
