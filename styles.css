@@ -1,6 +1,6 @@
 /* ==========================================================================
-   SLRG.XYZ // MOBILE-FIRST, ZERO-SCROLL BRUTALIST DESIGN SYSTEM
-   ========================================================================== */
+   SLRG.XYZ // SINGLE-PANEL, MOBILE-FIRST DESIGN SYSTEM (V3)
+   ========================================================================= */
 
 /* 1. RESET & BASE VARIABLES */
 * {
@@ -12,14 +12,14 @@
 :root {
     --brutalist-black: #000000;
     --brutalist-white: #ffffff;
-    --accent-orange: #FF5500;
+    --accent-green: #009B3A; /* Jamaican Flag Green */
     --border-width: 3px;
     --shadow-offset: 5px;
     --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* 2. BASE MOBILE-FIRST STYLES (Viewport Lock, No Scroll) */
+/* 2. BASE VIEWPORT LOCK (NO OUTSIDE SCROLL) */
 html, body {
     background-color: var(--brutalist-white);
     color: var(--brutalist-black);
@@ -27,171 +27,125 @@ html, body {
     line-height: 1.4;
     height: 100vh;
     height: 100dvh; /* Mobile viewport height fix */
-    overflow: hidden; /* Prevent body scroll entirely */
+    overflow: hidden; /* Lock the screen scroll permanently */
 }
 
 body {
-    padding: 12px;
+    padding: 16px; /* 1. Uniform margin around the body panel */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Master full-screen flex layout */
-.site-wrapper {
-    width: 100%;
-    height: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* ==========================================================================
-   3. ELEMENTOR STRUCTURAL GRID (MOBILE FIRST)
-   ========================================================================== */
-
-/* Sections are modular containers */
-.elementor-section {
-    width: 100%;
-    display: flex;
-    flex-shrink: 0; /* Keep header/footer rigid */
-}
-
-/* Manifesto and content can flex to take available space */
-.section-manifesto {
-    flex-shrink: 0;
-}
-
-.section-content {
-    flex-grow: 1; /* Stretch middle section to fill the screen */
-    min-height: 0; /* Enable internal scrolling on children if needed */
-}
-
-/* Inner centered containers */
-.elementor-container {
+/* 3. THE SINGLE MASTER COHESIVE PANEL */
+.master-panel {
     background-color: var(--brutalist-white);
     border: var(--border-width) solid var(--brutalist-black);
     box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--brutalist-black);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
     width: 100%;
     height: 100%;
-    min-height: 0;
-}
-
-/* Columns take full-width on mobile by default */
-.elementor-column {
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    min-height: 0;
+    overflow: hidden; /* Keeps child overflow fully contained */
 }
 
-/* Base Mobile Layout (Stacked columns, scrollable middle column if content overflows) */
-.section-content .elementor-container {
-    overflow-y: auto; /* Allow scrolling inside the card on small phones only */
-    gap: 16px;
-}
-
-/* ==========================================================================
-   4. ELEMENTOR REUSABLE WIDGETS
-   ========================================================================== */
-
-.elementor-widget {
-    margin-bottom: 12px;
-    width: 100%;
-}
-
-.elementor-widget:last-child {
-    margin-bottom: 0;
-}
-
-/* WIDGET: HEADING */
-.elementor-widget-heading h1 {
-    font-family: var(--font-mono);
-    font-size: 20px;
-    line-height: 1.2;
-    text-transform: uppercase;
-}
-
-.elementor-widget-heading h2 {
-    font-family: var(--font-mono);
-    font-size: 14px;
-    text-transform: uppercase;
-}
-
-/* WIDGET: DIVIDER */
-.elementor-widget-divider {
-    border-top: var(--border-width) solid var(--brutalist-black);
-    margin: 6px 0 10px 0;
-}
-
-/* WIDGET: SPACER */
-.elementor-widget-spacer {
-    height: 10px;
-    width: 100%;
-}
-
-/* WIDGET: TEXT EDITOR */
-.elementor-widget-text-editor p {
-    font-size: 12px;
-    color: #333333;
-}
-
-.elementor-widget-text-editor .lead {
-    font-size: 13px;
-    color: #111111;
-    line-height: 1.5;
-}
-
-/* ==========================================================================
-   5. CUSTOM MODULE STYLING
-   ========================================================================== */
-
-/* HEADER STYLE */
-.elementor-widget-logo-bar {
+/* 4. PERSISTENT HEADER BLOCK */
+.panel-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 16px 20px;
+    border-bottom: var(--border-width) solid var(--brutalist-black);
+    flex-shrink: 0;
 }
 
 .logo {
     font-family: var(--font-mono);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
-    background-color: var(--brutalist-black);
-    color: var(--brutalist-white);
-    padding: 2px 8px;
-    letter-spacing: 1px;
+    color: var(--brutalist-black);
+    background-color: transparent; /* 3. No background behind the logo */
+    padding: 0;
+    letter-spacing: 2px;
 }
 
 .tagline {
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: bold;
-    color: var(--accent-orange);
+    color: var(--accent-green); /* 2. Jamaican Flag Green */
 }
 
-/* ESSAY LIST MODULE */
-.elementor-widget-essay-list {
+/* 5. PERSISTENT MANIFESTO BLOCK */
+.panel-manifesto {
+    padding: 20px 20px 16px 20px;
+    flex-shrink: 0;
+}
+
+.panel-manifesto h1 {
+    font-family: var(--font-mono);
+    font-size: 20px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.lead {
+    font-size: 13px;
+    color: #333333;
+    line-height: 1.5;
+}
+
+/* Dividers */
+.panel-divider {
+    border-top: var(--border-width) solid var(--brutalist-black);
+    width: 100%;
+    flex-shrink: 0;
+}
+
+/* 6. SCROLLABLE MIDDLE AREA (5. Header and Footer are persistent, middle scrolls) */
+.panel-content {
+    flex-grow: 1;
+    overflow-y: auto; /* Isolated scrolling only here */
+    padding: 20px;
+    min-height: 0; /* Enable flex-child scrolling */
+}
+
+/* Two-column layout */
+.content-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 24px;
+    height: 100%;
+}
+
+.content-column h2 {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    border-bottom: var(--border-width) solid var(--brutalist-black);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+}
+
+/* ESSAY MODULE */
+.essay-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .essay-item {
-    border-left: var(--border-width) solid var(--accent-orange);
-    padding-left: 10px;
+    border-left: var(--border-width) solid var(--accent-green); /* Jamaican Flag Green */
+    padding-left: 12px;
 }
 
 .essay-status {
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: bold;
-    color: var(--accent-orange);
+    color: var(--accent-green);
     display: block;
     margin-bottom: 2px;
 }
@@ -208,11 +162,11 @@ body {
     color: #555555;
 }
 
-/* SPECS BOX MODULE */
-.elementor-widget-spec-box {
+/* SPECS MODULE */
+.spec-box {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .spec-block {
@@ -232,68 +186,87 @@ body {
     font-weight: bold;
 }
 
-/* FOOTER BAR MODULE */
-.elementor-widget-footer-bar {
+.column-divider {
+    border-top: var(--border-width) solid var(--brutalist-black);
+    margin: 20px 0;
+}
+
+.action-text {
+    font-size: 12px;
+}
+
+/* 7. PERSISTENT FOOTER BLOCK (7. No name in the footer) */
+.panel-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 20px;
+    border-top: var(--border-width) solid var(--brutalist-black);
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: bold;
     color: #777777;
-    width: 100%;
+    background-color: var(--brutalist-white);
+    flex-shrink: 0;
 }
 
 /* ==========================================================================
-   6. DESKTOP/TABLET UPGRADES (MIN-WIDTH: 768px)
+   8. DESKTOP/TABLET GRID UPGRADES (MIN-WIDTH: 768px)
    ========================================================================== */
 @media (min-width: 768px) {
     body {
-        padding: 24px;
-    }
-    
-    .site-wrapper {
-        gap: 16px;
+        padding: 32px; /* Bigger frame margins on desktop */
     }
 
-    /* Set exact sizing for header/manifesto/footer */
-    .elementor-container {
-        padding: 20px;
+    .panel-header {
+        padding: 20px 32px;
     }
 
-    .elementor-widget-heading h1 {
-        font-size: 26px;
+    .logo {
+        font-size: 24px;
     }
 
-    /* Convert Content Section back to a side-by-side flex grid */
-    .section-content .elementor-container {
+    .tagline {
+        font-size: 13px;
+    }
+
+    .panel-manifesto {
+        padding: 32px 32px 24px 32px;
+    }
+
+    .panel-manifesto h1 {
+        font-size: 28px;
+    }
+
+    .lead {
+        font-size: 15px;
+    }
+
+    .panel-content {
+        padding: 32px;
+    }
+
+    /* Convert Content back to side-by-side columns */
+    .content-grid {
         flex-direction: row;
-        overflow: hidden; /* Lock internal scrolling on desktop */
         gap: 0;
     }
 
     .col-60 {
         flex: 0 0 60%;
         width: 60%;
-        padding-right: 20px;
+        padding-right: 32px;
         border-right: var(--border-width) solid var(--brutalist-black);
-        height: 100%;
-        overflow-y: auto; /* If content overflows, scroll only this inner box */
     }
 
     .col-40 {
         flex: 0 0 40%;
         width: 40%;
-        padding-left: 20px;
-        height: 100%;
-        overflow-y: auto;
+        padding-left: 32px;
     }
 
-    .elementor-widget-logo-bar .logo {
-        font-size: 22px;
-    }
-    
-    .tagline {
-        font-size: 13px;
+    .panel-footer {
+        padding: 16px 32px;
+        font-size: 11px;
     }
 }
