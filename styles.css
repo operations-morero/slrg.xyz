@@ -203,7 +203,7 @@ body {
     overflow: hidden;
 }
 
-/* GLOBAL SLIM GREEN BRUTALIST SCROLLBAR */
+/* GLOBAL SLIM GREEN BRUTALIST SCROLLBAR (SHARP, NO ARROWS, EQUAL MARGINS) */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--accent-green) transparent;
@@ -213,13 +213,25 @@ body {
     width: 4px;
     height: 4px;
 }
+
+/* REMOVE UP/DOWN ARROWS */
+::-webkit-scrollbar-button {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
 ::-webkit-scrollbar-track {
     background: transparent;
+    margin: 16px 0; /* Equal top and bottom track margin */
 }
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--accent-green);
-    border-radius: 0;
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background-color: #00c94d;
 }
@@ -373,12 +385,22 @@ body {
     text-decoration: underline;
 }
 
-/* BRUTALIST AUDIO CONTROLS DECK */
-.audio-deck-actions {
-    display: flex;
+/* BRUTALIST AUDIO CONTROLS (WRAPPED IN SINGLE BRACKETS) */
+.audio-deck-pill {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-green);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.pill-bracket {
+    color: var(--accent-green);
+    user-select: none;
 }
 
 .audio-deck-btn {
@@ -404,15 +426,6 @@ body {
     color: #ffffff;
     background-color: var(--accent-green);
     padding: 1px 4px;
-}
-
-.audio-deck-status {
-    font-family: var(--font-mono);
-    font-size: 10.5px;
-    font-weight: 700;
-    color: var(--muted-color);
-    letter-spacing: 0.5px;
-    white-space: nowrap;
 }
 
 /* WHITE DETAIL TITLE */

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=30">
+    <link rel="stylesheet" href="styles.css?v=32">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <div class="header-top-bar">
                 <div class="logo-group">
                     <div class="logo">SLRG.XYZ</div>
-                    <div class="tagline">[ AI SLURGE ]</div>
+                    <div class="tagline">[ SPATIAL REASONING + AI SLURGE ]</div>
                 </div>
                 <!-- Interactive Theme Toggle Button -->
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">[ ☼ ]</button>
@@ -73,13 +73,13 @@
                     <div class="detail-header-nav">
                         <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
                         
-                        <!-- BRUTALIST AUDIO CONTROLS DECK IN TOP NAV -->
-                        <div class="audio-deck-actions">
-                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind 10 seconds">[ ⟲ -10S ]</button>
-                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">[ ▷ PLAY ]</button>
-                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward 10 seconds">[ ⟳ +10S ]</button>
-                            <button id="audio-btn-stop" class="audio-deck-btn" aria-label="Stop audio">[ ◼ STOP ]</button>
-                            <span id="audio-deck-status" class="audio-deck-status">[ 00 / 00 ]</span>
+                        <!-- BRUTALIST AUDIO CONTROLS (SINGLE WRAPPED DECK) -->
+                        <div class="audio-deck-pill">
+                            <span class="pill-bracket">[</span>
+                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind 10 seconds">⟲ -10S</button>
+                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">▷ PLAY</button>
+                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward 10 seconds">⟳ +10S</button>
+                            <span class="pill-bracket">]</span>
                         </div>
                     </div>
 
@@ -111,8 +111,8 @@
 
         <!-- FOOTER CARD (CONSISTENT ACROSS ENTIRE SITE) -->
         <footer class="brutalist-card panel-footer">
-            <span class="footer-status">SLRG.XYZ // NOTTINGHAM</span>
-            <span class="footer-coords">[ 52.9548° N, 1.1581° W ]</span>
+            <span class="footer-status">DIGITAL ARCHIVE // ALL RIGHTS RECLAIMED.</span>
+            <span class="footer-coords">[ 90.0000° N, 0.0000° E ]</span>
         </footer>
 
     </div>
@@ -250,8 +250,6 @@
         const audioPlayBtn = document.getElementById('audio-btn-play');
         const audioRewindBtn = document.getElementById('audio-btn-rewind');
         const audioForwardBtn = document.getElementById('audio-btn-forward');
-        const audioStopBtn = document.getElementById('audio-btn-stop');
-        const audioStatus = document.getElementById('audio-deck-status');
 
         function prepareAudioText() {
             const cleanText = (detailTitle.textContent + '. ' + detailBody.innerText)
@@ -262,18 +260,6 @@
             const rawSentences = cleanText.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) || [cleanText];
             audioSentences = rawSentences.map(s => s.trim()).filter(s => s.length > 0);
             currentSentenceIdx = 0;
-            updateAudioProgress();
-        }
-
-        function updateAudioProgress() {
-            if (!audioStatus) return;
-            if (audioSentences.length === 0) {
-                audioStatus.textContent = '[ 00 / 00 ]';
-                return;
-            }
-            const currentStr = String(Math.min(currentSentenceIdx + 1, audioSentences.length)).padStart(2, '0');
-            const totalStr = String(audioSentences.length).padStart(2, '0');
-            audioStatus.textContent = `[ ${currentStr} / ${totalStr} ]`;
         }
 
         function getBestVoice() {
@@ -296,7 +282,6 @@
             window.speechSynthesis.cancel();
 
             currentSentenceIdx = index;
-            updateAudioProgress();
 
             const textToSpeak = audioSentences[currentSentenceIdx];
             const utterance = new SpeechSynthesisUtterance(textToSpeak);
@@ -325,7 +310,7 @@
             isAudioPlaying = true;
             isAudioPaused = false;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '[ ❚❚ PAUSE ]';
+                audioPlayBtn.textContent = '❚❚ PAUSE';
                 audioPlayBtn.classList.add('is-active');
             }
             playSentence(currentSentenceIdx);
@@ -338,7 +323,7 @@
             }
             isAudioPaused = true;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '[ ▷ RESUME ]';
+                audioPlayBtn.textContent = '▷ RESUME';
                 audioPlayBtn.classList.remove('is-active');
             }
         }
@@ -351,10 +336,9 @@
             isAudioPaused = false;
             currentSentenceIdx = 0;
             if (audioPlayBtn) {
-                audioPlayBtn.textContent = '[ ▷ PLAY ]';
+                audioPlayBtn.textContent = '▷ PLAY';
                 audioPlayBtn.classList.remove('is-active');
             }
-            updateAudioProgress();
         }
 
         if (audioPlayBtn) {
@@ -373,8 +357,6 @@
                 currentSentenceIdx = Math.max(0, currentSentenceIdx - 2);
                 if (isAudioPlaying && !isAudioPaused) {
                     playSentence(currentSentenceIdx);
-                } else {
-                    updateAudioProgress();
                 }
             });
         }
@@ -385,15 +367,7 @@
                 currentSentenceIdx = Math.min(audioSentences.length - 1, currentSentenceIdx + 2);
                 if (isAudioPlaying && !isAudioPaused) {
                     playSentence(currentSentenceIdx);
-                } else {
-                    updateAudioProgress();
                 }
-            });
-        }
-
-        if (audioStopBtn) {
-            audioStopBtn.addEventListener('click', () => {
-                stopAudio();
             });
         }
 
