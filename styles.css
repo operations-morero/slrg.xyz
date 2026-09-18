@@ -1,6 +1,9 @@
 /* ==========================================================================
-   SLRG.XYZ // DUAL-THEME, GREEN-SHADOW BRUTALIST DESIGN SYSTEM (V5)
+   SLRG.XYZ // BRUTALIST DESIGN SYSTEM (V8)
    ========================================================================= */
+
+/* 0. UNIQUE GOOGLE FONTS IMPORT */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* 1. DUAL-THEME VARIABLES */
 :root {
@@ -11,34 +14,44 @@
     --card-bg: #ffffff;
     
     --accent-green: #009B3A; /* Jamaican Flag Green */
-    --border-width: 3px;
-    --shadow-offset: 6px;
-    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    --border-width: 2.5px;
+    --shadow-size: 5px;
+    
+    /* Typography Tokens */
+    --font-mono: 'Space Mono', monospace;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* Dark Mode Variable overrides */
 .dark-mode {
     --bg-color: #111111;
-    --text-color: #ffffff;
+    --text-color: #f5f5f5;
     --border-color: #ffffff;
     --card-bg: #111111;
 }
 
 /* 2. BASE VIEWPORT LOCK (NO PAGE SCROLL) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html, body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: var(--font-sans);
-    line-height: 1.4;
+    line-height: 1.35;
     height: 100vh;
-    height: 100dvh; /* Mobile viewport height fix */
-    overflow: hidden; /* Disable page scroll completely */
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden; /* Lock the outer viewport */
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body {
-    padding: 12px 18px 20px 12px; /* Extra right and bottom padding to cleanly contain the green card shadows */
+    /* Generous outer margin/padding to guarantee right & bottom shadows fit */
+    padding: 10px 14px 16px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,23 +60,25 @@ body {
 /* Master flex wrapper holding the 3 distinct cards */
 .site-wrapper {
     width: 100%;
+    max-width: 900px;
     height: 100%;
     max-height: 100%;
-    max-width: 1000px;
     display: flex;
     flex-direction: column;
-    gap: 12px; /* Clean gap between cards */
+    gap: 8px; /* Tightened gap between cards */
     overflow: hidden;
 }
 
 /* ==========================================================================
-   3. THE BRUTALIST FLOATING CARD COMPONENT (WITH GREEN SHADOW)
+   3. THE BRUTALIST FLOATING CARD COMPONENT (SHADOW ON RIGHT & BOTTOM)
    ========================================================================= */
 .brutalist-card {
     background-color: var(--card-bg);
     border: var(--border-width) solid var(--border-color);
-    box-shadow: var(--shadow-offset) var(--shadow-offset) 0px var(--accent-green); /* 3. Green Shadow */
-    padding: 16px;
+    box-shadow: var(--shadow-size) var(--shadow-size) 0px var(--accent-green); /* Right + Bottom shadow */
+    margin-right: var(--shadow-size); /* Leave space for right shadow */
+    margin-bottom: var(--shadow-size); /* Leave space for bottom shadow */
+    padding: 12px 14px;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -73,8 +88,9 @@ body {
 .panel-header {
     display: flex;
     flex-direction: column;
-    flex-shrink: 0; /* Keep header card rigid */
-    gap: 12px;
+    flex-shrink: 0; /* Header stays rigid */
+    gap: 8px; /* Compact spacing */
+    padding: 12px 14px;
 }
 
 /* Top bar: Logo, Tagline, Theme Button */
@@ -87,25 +103,27 @@ body {
 
 .logo-group {
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 .logo {
     font-family: var(--font-mono);
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 18px;
+    font-weight: 700;
     color: var(--text-color);
-    background-color: transparent; /* No fill background behind logo */
-    padding: 0;
-    letter-spacing: 2px;
+    background-color: transparent;
+    letter-spacing: 1.5px;
+    line-height: 1;
 }
 
 .tagline {
     font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: bold;
+    font-size: 9px;
+    font-weight: 700;
     color: var(--accent-green);
+    letter-spacing: 0.5px;
 }
 
 /* Brutalist Theme Switch Button */
@@ -114,10 +132,10 @@ body {
     border: none;
     color: var(--text-color);
     font-family: var(--font-mono);
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    padding: 4px 8px;
+    padding: 2px 4px;
     outline: none;
 }
 
@@ -134,83 +152,98 @@ body {
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.hero-title {
-    font-family: var(--font-sans); /* Clean legible description */
-    font-size: 12px;
-    font-weight: normal;
-    color: var(--text-color);
-    opacity: 0.85;
-    text-transform: none;
+    gap: 4px; /* Tight compact gap */
 }
 
 .hero-large-text {
-    font-family: var(--font-mono); /* High-impact uppercase monospace title */
-    font-size: 20px;
-    font-weight: 900;
-    line-height: 1.2;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.25;
     text-transform: uppercase;
+    letter-spacing: -0.3px;
+}
+
+.hero-title {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-color);
+    opacity: 0.85;
+    line-height: 1.35;
 }
 
 /* ==========================================================================
    5. CARD 2: MAIN BODY (CLEAN VERTICAL ARTICLE LAYOUT)
    ========================================================================= */
 .panel-body {
-    flex: 1 1 0; /* Flexibly takes remaining space without pushing footer */
-    min-height: 0; /* Enable internal scrolling on flex child */
+    flex: 1 1 0; /* Stretches to fill remaining vertical space */
+    min-height: 0; /* Necessary for inner scrolling */
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 12px 14px;
     overflow: hidden;
 }
 
 .body-scroll-area {
     flex: 1 1 0;
-    overflow-y: auto; /* Isolated scrollbar inside Card 2 */
+    overflow-y: auto; /* Isolated scroll */
     min-height: 0;
+    padding-right: 4px;
     overscroll-behavior: contain;
+}
+
+/* Custom Minimalist Scrollbar */
+.body-scroll-area::-webkit-scrollbar {
+    width: 4px;
+}
+.body-scroll-area::-webkit-scrollbar-thumb {
+    background-color: var(--accent-green);
 }
 
 /* Simple, single-column vertical article layout */
 .article-layout {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px; /* Tight, non-bloated gap */
     width: 100%;
 }
 
 .article-item {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .article-status {
     font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: bold;
+    font-size: 8.5px;
+    font-weight: 700;
     color: var(--accent-green);
+    letter-spacing: 0.5px;
 }
 
 .article-title {
     font-family: var(--font-mono);
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: -0.2px;
 }
 
 .article-desc {
-    font-size: 11px;
+    font-family: var(--font-sans);
+    font-size: 10.5px;
     color: var(--text-color);
     opacity: 0.85;
+    line-height: 1.3;
 }
 
 .article-divider {
     border-top: 1px solid var(--border-color);
-    opacity: 0.3;
+    opacity: 0.25;
     width: 100%;
+    margin-top: 2px;
 }
 
 /* ==========================================================================
@@ -221,69 +254,56 @@ body {
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 9px;
-    font-weight: bold;
+    font-size: 8.5px;
+    font-weight: 700;
     color: var(--text-color);
-    opacity: 0.6;
-    flex-shrink: 0; /* Keep card sizing rigid */
+    opacity: 0.7;
+    flex-shrink: 0; /* Rigidly locked at bottom */
+    padding: 8px 14px;
 }
 
 /* ==========================================================================
-   7. DESKTOP UPGRADES (MIN-WIDTH: 768px)
+   7. DESKTOP RESPONSIVE UPGRADES (MIN-WIDTH: 768px)
    ========================================================================= */
 @media (min-width: 768px) {
     body {
-        padding: 32px; /* Generous margins on desktop screens */
+        padding: 20px 28px 24px 20px;
     }
 
     .site-wrapper {
-        gap: 20px;
+        gap: 12px;
     }
 
     .brutalist-card {
-        padding: 24px;
+        padding: 16px 20px;
     }
 
-    /* Scaling header fonts */
     .logo {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .tagline {
-        font-size: 12px;
-    }
-
-    .theme-toggle-btn {
-        font-size: 16px;
-    }
-
-    /* Scaling body manifesto fonts */
-    .hero-title {
-        font-size: 14px;
+        font-size: 11px;
     }
 
     .hero-large-text {
-        font-size: 26px;
+        font-size: 20px;
     }
 
-    /* Body internal padding */
-    .panel-body {
-        padding: 32px;
-    }
-
-    .article-layout {
-        gap: 24px;
-    }
-
-    .article-title {
-        font-size: 15px;
-    }
-
-    .article-desc {
+    .hero-title {
         font-size: 13px;
     }
 
+    .article-title {
+        font-size: 14px;
+    }
+
+    .article-desc {
+        font-size: 12px;
+    }
+
     .panel-footer {
-        font-size: 11px;
+        font-size: 10px;
+        padding: 10px 20px;
     }
 }
