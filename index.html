@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=19">
+    <link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <div class="header-top-bar">
                 <div class="logo-group">
                     <div class="logo">SLRG.XYZ</div>
-                    <div class="tagline">[ SPATIAL REASONING & SLURGE ]</div>
+                    <div class="tagline">[ AI SLURGE ]</div>
                 </div>
                 <!-- Interactive Theme Toggle Button -->
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">[ ☼ ]</button>
@@ -40,42 +40,30 @@
         <!-- PANEL 2: SEPARATE MAIN BODY CARD -->
         <main class="brutalist-card panel-body">
             
-            <!-- VIEW 1: ARTICLE INDEX LIST -->
+            <!-- VIEW 1: ARTICLE INDEX LIST (2 CURATED ARTICLES) -->
             <div id="articles-list-view" class="body-scroll-area">
                 <div class="article-layout">
                     
-                    <!-- ARTICLE 1 -->
+                    <!-- ARTICLE 1: AUTISM IN PLAIN SIGHT -->
                     <article class="article-item selectable" data-article-id="art-1">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.18 ]</span>
-                            <span class="article-tags-preview">#FOUR-BURNERS &nbsp;#SYSTEMS</span>
+                            <span class="article-tags-preview">#AUTISM &nbsp;#CONSTRUCTION</span>
                         </div>
-                        <h2 class="article-title">01 // The Four Burners Theory</h2>
-                        <p class="article-desc">The physical and mental math of turning off the family burner to protect your health, work, and sanity.</p>
+                        <h2 class="article-title">01 // Autism in Plain Sight</h2>
+                        <p class="article-desc">Performing at a high level, visualising through pictures, and managing sensory burnout while hiding something hidden.</p>
                     </article>
 
                     <div class="article-divider"></div>
 
-                    <!-- ARTICLE 2 (ARTWORK / CONCEPT) -->
+                    <!-- ARTICLE 2: THE FOUR BURNERS THEORY -->
                     <article class="article-item selectable" data-article-id="art-2">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.12 ]</span>
-                            <span class="article-tags-preview">#ASCII-ART &nbsp;#GEOMETRY</span>
+                            <span class="article-tags-preview">#FOUR-BURNERS &nbsp;#SYSTEMS</span>
                         </div>
-                        <h2 class="article-title">02 // Spatial Geometry & Noise Isolation</h2>
-                        <p class="article-desc">Visual structural experiment. Raw ASCII spatial mapping and nervous system bandwidth preservation.</p>
-                    </article>
-
-                    <div class="article-divider"></div>
-
-                    <!-- ARTICLE 3 -->
-                    <article class="article-item selectable" data-article-id="art-3">
-                        <div class="article-header-row">
-                            <span class="article-date">[ 2026.09.04 ]</span>
-                            <span class="article-tags-preview">#AUDHD &nbsp;#BURNOUT</span>
-                        </div>
-                        <h2 class="article-title">03 // AuDHD and the Cost of Carrying</h2>
-                        <p class="article-desc">How carrying 80% of a stagnation system causes total executive burnout, and how to execute a clean decoupling.</p>
+                        <h2 class="article-title">02 // The Four Burners Theory</h2>
+                        <p class="article-desc">The reality of energy constraints: why sustainable success demands cutting burners, not pretending you can heat all four.</p>
                     </article>
 
                 </div>
@@ -107,29 +95,28 @@
                         </div>
                     </div>
 
-                    <!-- DYNAMIC ARTICLE BODY COPY -->
-                    <div id="detail-body-text" class="detail-paragraphs">
-                        <!-- Content Injected via Script -->
+                    <!-- MAIN ARTICLE BODY TEXT -->
+                    <div id="detail-body-text" class="detail-body-paragraphs">
+                        <!-- Populated dynamically via JS -->
                     </div>
-
                 </div>
 
             </div>
 
         </main>
 
-        <!-- PANEL 3: SEPARATE FOOTER CARD -->
+        <!-- FOOTER CARD -->
         <footer class="brutalist-card panel-footer">
-            <span>SLRG.XYZ // ALL RIGHTS RECLAIMED.</span>
-            <span>EST. 2026</span>
+            <span class="footer-status">SYSTEM ARCHIVE // ALL RIGHTS RESERVED</span>
+            <span class="footer-coords">[ 52.4862° N, 1.8904° W ]</span>
         </footer>
 
     </div>
 
-    <!-- SCRIPT FOR DUAL-THEME, HERO COLLAPSE, & TAGS VIEWER -->
+    <!-- SCRIPT FOR SELECTION, BLINK & THEME PERSISTENCE -->
     <script>
         /* ==========================================================================
-           1. THEME TOGGLE LOGIC
+           1. THEME TOGGLING (DARK / LIGHT) & LOCAL STORAGE PERSISTENCE
            ========================================================================== */
         const themeToggleBtn = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
@@ -165,53 +152,48 @@
         });
 
         /* ==========================================================================
-           2. DUMMY ARTICLES DATA STORE (MAX 2 TAGS PER ARTICLE)
+           2. ARTICLES DATA STORE (EXACTLY 2 CURATED ARTICLES)
            ========================================================================== */
         const articlesDB = {
             'art-1': {
-                title: '01 // The Four Burners Theory',
+                title: '01 // Autism in Plain Sight',
                 date: '[ 2026.09.18 ]',
-                timestamp: '2026-09-18T16:00:00Z',
-                tags: ['#FOUR-BURNERS', '#SYSTEMS'],
+                timestamp: '2026-09-18T12:00:00Z',
+                tags: ['#AUTISM', '#CONSTRUCTION'],
                 content: `
-                    <p>Imagine your life is represented by a stove with four burners on it: <strong>Health</strong>, <strong>Work</strong>, <strong>Friends</strong>, and <strong>Family</strong>.</p>
-                    <p>In order to be successful you have to cut off one of your burners. And in order to be truly exceptional, you have to cut off two.</p>
-                    <p>For ten years, I kept the family burner burning at 100% capacity at the direct expense of my own physical health and nervous system. When you carry others who refuse to move their own weight, you do not elevate them—you only drown yourself.</p>
-                    <p>Turning off the family burner is not cruelty; it is the fundamental math of self-preservation. When the system threatens your existence, you decouple cleanly. Zero guilt. 100% bandwidth reclaimed.</p>
+                    <p>I didn't end up in construction by accident. As a child I remember looking up at buildings and bridges and couldn't stop thinking about how it got there? Engineering became one of my "special interest" and I was obsessed with understanding how things were built and how they worked.</p>
+                    <p>My brain didn't allow me to just stop at the building. It needed to know the materials, the age, the architectural style, the ground conditions. It always has more questions because for some reason it needs all the details. It needs to understand each step before, how it connects, and why it exists. Which is honestly exhausting.</p>
+                    <p>But it's the reason construction was a good career choice. It has rules, a clear sequence, and the work can speak for itself. Which matters, because sometimes I don't have access to words.</p>
+                    <p>My brain works in pictures which helps with visualising what construction should look like, but not with explaining it to others. If I can't see it, I can't understand it. That's why I ask a lot of questions. Not to challenge, but to make it understandable. Sometimes that's seen as thorough, other times it's seen as difficult.</p>
+                    <p>But I never had a problem working with operatives on site. I'd sketch, show images, get them to teach me their trade. We connected through actions, not words. It worked and I progressed quickly into management, which I found needs more of the skills I struggle with.</p>
+                    <p>Sounds can be overwhelming, like the volume dial keeps turning up until it's physically painful. This makes it difficult to focus in meetings. The light in the office so bright your eyes are burning and watering, which makes it hard to work. Sometimes clothing feels like needles against your skin, so you fidget a lot and feel uncomfortable. Most people filter it out but I don't always have that option.</p>
+                    <p>I'm extremely particular, a bit weird, but good at my job, so people tolerate it. You make sure your easy to work with, approachable, never judging. That's genuine. But it's also insurance. When you're different, it helps if people have a reason to keep you around. So you give them one. You show up and you do the work and help where you know you can without being asked.</p>
+                    <p>But my entire career I didn't understand why I could solve really complex engineering problems but struggle with something as simple as putting my socks on in the morning. I wasn't diagnosed until I was an adult, so I had adapted without knowing what I was adapting to. I thought what I was going through was normal. But I have Level 1 Autism, which you wouldn't know from just looking at me. It's not the visual type of autism, it's the "high functioning" kind, but I'd describe it as sometimes high functioning.</p>
+                    <p>From the outside, it looks consistent and high achieving. I turn up, I contribute, I deliver great work, and I love construction. What isn't visible is the amount of energy it takes to maintain it. Certain situations deplete my battery fast. Autistic burnout isn't just being tired, it's losing access to skills, speech, vision, the ability to think clearly. One day everything works. The next, it doesn't, so you build systems, rely on structure and routine, mask. That works, until it doesn't.</p>
+                    <p>Most of the time, I've got it together. The rest of the time, I just make sure no one can tell.</p>
+                    <p>I've learnt that Construction is full of people like me. Performing at a high level and managing something hidden at the same time.</p>
+                    <div class="article-source-bar">
+                        <a href="https://digitalconstructionplus.com/autism-in-construction-achieving-yet-hiding-in-plain-sight/" target="_blank" rel="noopener" class="article-source-link">[ READ ORIGINAL ON DIGITAL CONSTRUCTION PLUS ↗ ]</a>
+                    </div>
                 `
             },
             'art-2': {
-                title: '02 // Spatial Geometry & Noise Isolation',
+                title: '02 // The Four Burners Theory',
                 date: '[ 2026.09.12 ]',
-                timestamp: '2026-09-12T10:30:00Z',
-                tags: ['#ASCII-ART', '#GEOMETRY'],
+                timestamp: '2026-09-12T16:00:00Z',
+                tags: ['#FOUR-BURNERS', '#SYSTEMS'],
                 content: `
-                    <div class="ascii-art-block">
-+-------------------------------------------------------------+
-|  [ CORE NERVOUS SYSTEM ]                                    |
-|                                                             |
-|       /\\         [NOISE ISOLATION BARRIER]                  |
-|      /  \\        ====================================       |
-|     / /\\ \\       | S P A T I A L   C E N T R I C     |      |
-|    / /  \\ \\      |                                  |      |
-|   /_/____\\_\\     |  INPUT:  100% RAW REALITY        |      |
-|                  |  OUTPUT: UNFILTERED CREATION     |      |
-|                  ====================================       |
-|                                                             |
-+-------------------------------------------------------------+
-                    </div>
-                    <p>Geometry does not lie. It has no passive aggression, no unstated emotional contracts, and no social hypocrisy. Spatial boundaries are absolute.</p>
-                    <p>When the mind is overstimulated by chaotic social noise, returning to rigid boxes, solid borders, and clean monospace coordinates restores cognitive baseline.</p>
-                `
-            },
-            'art-3': {
-                title: '03 // AuDHD and the Cost of Carrying',
-                date: '[ 2026.09.04 ]',
-                timestamp: '2026-09-04T08:15:00Z',
-                tags: ['#AUDHD', '#BURNOUT'],
-                content: `
-                    <p>Autistic-ADHD minds possess vast bursts of hyper-focus paired with sensitive executive regulation. When forced to mask and compensate for stagnant environments, executive burnout is catastrophic.</p>
-                    <p>The only sustainable remedy is total spatial minimalism: ruthlessly stripping away unnecessary obligations, expectations, and emotional dead-weight.</p>
+                    <p>Imagine your life is represented by a gas stove with four distinct burners on it: <strong>Health</strong>, <strong>Work</strong>, <strong>Friends</strong>, and <strong>Family</strong>.</p>
+                    
+                    <p>The core theory posits an inescapable reality of human energy: in order to be successful, you must cut off one burner. In order to be truly exceptional, you have to cut off two.</p>
+                    
+                    <p>Society conditions us to believe that a high-achieving life requires keeping all four burners roaring at maximum heat simultaneously. It is a mathematical impossibility. When you attempt to distribute equal pressure across all four quadrants, the flames flicker, heat dissipates, and nothing actually cooks. You end up in perpetual cognitive debt.</p>
+                    
+                    <p>For high-functioning and AuDHD individuals, the cost of a simmering burner is even higher. An unattended obligation is never truly off—it leaks background RAM, drains working memory, and triggers chronic low-grade anxiety. Leaving a burner on a "low simmer" doesn't conserve energy; it slowly suffocates executive function.</p>
+                    
+                    <p>The only sustainable strategy is conscious, ruthless burner management. You don't apologize for turning a burner off—you acknowledge the season you are in. When work and health require 100% of your gas, social obligations and draining family dynamics must be shut off completely.</p>
+                    
+                    <p>Turning off a burner is not failure or cruelty; it is the fundamental physics of spatial bandwidth and self-preservation. When the system demands output, you cut the gas to zero on everything that compromises your survival.</p>
                 `
             }
         };

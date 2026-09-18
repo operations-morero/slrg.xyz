@@ -465,6 +465,28 @@ body {
     margin: 8px 0;
 }
 
+/* EXTERNAL ARTICLE SOURCE LINK */
+.article-source-bar {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1.5px dashed var(--border-color);
+    opacity: 0.85;
+}
+
+.article-source-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-green);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.article-source-link:hover {
+    text-decoration: underline;
+}
+
 /* ==========================================================================
    6. CARD 3: FOOTER
    ========================================================================= */
