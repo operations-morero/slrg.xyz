@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=32">
+    <link rel="stylesheet" href="styles.css?v=33">
 </head>
 <body>
 
@@ -18,7 +18,7 @@
             <!-- TOP BAR: Logo, Tagline, Theme Toggle -->
             <div class="header-top-bar">
                 <div class="logo-group">
-                    <div class="logo">SLRG.XYZ</div>
+                    <div id="site-logo" class="logo" role="button" tabindex="0" aria-label="Return to home archive">SLRG.XYZ</div>
                     <div class="tagline">[ SPATIAL REASONING + AI SLURGE ]</div>
                 </div>
                 <!-- Interactive Theme Toggle Button -->
@@ -411,18 +411,36 @@
             });
         });
 
+        // Function to return to home archive
+        function returnToHome() {
+            stopAudio();
+            detailView.classList.add('hidden');
+            listView.classList.remove('hidden');
+            heroWrapper.classList.remove('hero-collapsed');
+            listView.scrollTop = 0;
+        }
+
         // Handle Back Button & Hero Expand
         backBtn.addEventListener('click', () => {
             stopAudio();
             backBtn.textContent = '[ LOADING... ]';
             setTimeout(() => {
                 backBtn.textContent = '[ < BACK TO ARCHIVE ]';
-                detailView.classList.add('hidden');
-                listView.classList.remove('hidden');
-                // Re-expand hero
-                heroWrapper.classList.remove('hero-collapsed');
+                returnToHome();
             }, 100);
         });
+
+        // Handle Site Logo click to return to home
+        const siteLogo = document.getElementById('site-logo');
+        if (siteLogo) {
+            siteLogo.addEventListener('click', returnToHome);
+            siteLogo.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    returnToHome();
+                }
+            });
+        }
     </script>
 
 </body>
