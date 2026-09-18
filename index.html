@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body>
 
@@ -27,10 +27,10 @@
 
             <div class="header-divider"></div>
 
-            <!-- THE HERO CONTENT -->
+            <!-- THE HERO CONTENT (Swapped back to correct font-style hierarchy) -->
             <div class="hero-content">
-                <p class="hero-title">Built by an AuDHD developer, creator, and structural minimalist reclaiming bandwidth.</p>
-                <h1 class="hero-large-text">Words are messy and full of interpretation. Geometry and spatial actions are clean. I recover when I do, create, and build. This domain is sitting here wasting no longer.</h1>
+                <h1 class="hero-large-text">WORDS ARE MESSY AND FULL OF INTERPRETATION.</h1>
+                <p class="hero-title">Geometry is a clean chaos. I recover through creation. Inner thoughts of an AuDHD developer, creator, and structural minimalist reclaiming bandwidth.</p>
             </div>
 
         </header>
@@ -79,33 +79,44 @@
 
     </div>
 
-    <!-- LIGHTWEIGHT LIGHT/DARK THEME TOGGLE SCRIPT -->
+    <!-- HIGH-STRENGTH LIGHT/DARK THEME TOGGLE SCRIPT -->
     <script>
         const themeToggleBtn = document.getElementById('theme-toggle');
-        
-        // Check for saved theme preference, otherwise default to dark mode if system prefers it
-        const currentTheme = localStorage.getItem('theme');
-        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (currentTheme === 'dark' || (!currentTheme && systemPrefersDark)) {
-            document.documentElement.classList.add('dark-mode');
-            themeToggleBtn.textContent = '[ ☽ ]';
-        } else {
-            themeToggleBtn.textContent = '[ ☼ ]';
-        }
+        const htmlElement = document.documentElement;
 
-        themeToggleBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark-mode');
-            
-            let theme = 'light';
-            if (document.documentElement.classList.contains('dark-mode')) {
-                theme = 'dark';
+        // Apply theme and update toggle text
+        function applyTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark-mode');
+                // Force color-scheme to let browser dark-engines know we support dark natively
+                htmlElement.style.colorScheme = 'dark';
                 themeToggleBtn.textContent = '[ ☽ ]';
             } else {
+                htmlElement.classList.remove('dark-mode');
+                htmlElement.style.colorScheme = 'light';
                 themeToggleBtn.textContent = '[ ☼ ]';
             }
-            
-            localStorage.setItem('theme', theme);
+        }
+
+        // Initialize theme based on storage or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            applyTheme('dark');
+        } else {
+            applyTheme('light');
+        }
+
+        // Toggle event
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark-mode')) {
+                applyTheme('light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                applyTheme('dark');
+                localStorage.setItem('theme', 'dark');
+            }
         });
     </script>
 
