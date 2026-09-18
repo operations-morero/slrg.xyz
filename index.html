@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=14">
+    <link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
 
@@ -48,7 +48,7 @@
                     <article class="article-item selectable" data-article-id="art-1">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.18 ]</span>
-                            <span class="article-tags-preview">[ #SYSTEMS #BURNERS ]</span>
+                            <span class="article-tags-preview">[ #FOUR-BURNERS #SYSTEMS ]</span>
                         </div>
                         <h2 class="article-title">01 // The Four Burners Theory</h2>
                         <p class="article-desc">The physical and mental math of turning off the family burner to protect your health, work, and sanity.</p>
@@ -60,7 +60,7 @@
                     <article class="article-item selectable" data-article-id="art-2">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.12 ]</span>
-                            <span class="article-tags-preview">[ #ART #GEOMETRY ]</span>
+                            <span class="article-tags-preview">[ #ASCII-ART #GEOMETRY ]</span>
                         </div>
                         <h2 class="article-title">02 // Spatial Geometry & Noise Isolation</h2>
                         <p class="article-desc">Visual structural experiment. Raw ASCII spatial mapping and nervous system bandwidth preservation.</p>
@@ -72,7 +72,7 @@
                     <article class="article-item selectable" data-article-id="art-3">
                         <div class="article-header-row">
                             <span class="article-date">[ 2026.09.04 ]</span>
-                            <span class="article-tags-preview">[ #AUDHD #EXECUTIVE ]</span>
+                            <span class="article-tags-preview">[ #AUDHD #BURNOUT ]</span>
                         </div>
                         <h2 class="article-title">03 // AuDHD and the Cost of Carrying</h2>
                         <p class="article-desc">How carrying 80% of a stagnation system causes total executive burnout, and how to execute a clean decoupling.</p>
@@ -92,7 +92,7 @@
                 <div class="article-detail-content">
                     <h2 id="detail-title" class="detail-main-title">ARTICLE TITLE</h2>
 
-                    <!-- RAW METADATA BLOCK WITH DYNAMIC TAGS -->
+                    <!-- RAW METADATA BLOCK (TIMESTAMP & MAX 2 TAGS) -->
                     <div class="raw-metadata-box">
                         <div class="metadata-heading">[ METADATA ]</div>
                         <div class="metadata-grid">
@@ -104,18 +104,10 @@
                                 <span class="meta-key">TAGS:</span>
                                 <span id="meta-tags" class="meta-val-tags"></span>
                             </div>
-                            <div class="meta-row">
-                                <span class="meta-key">FORMAT:</span>
-                                <span id="meta-format" class="meta-val">ESSAY // SYSTEMS ARCHITECTURE</span>
-                            </div>
-                            <div class="meta-row">
-                                <span class="meta-key">STATUS:</span>
-                                <span id="meta-status" class="meta-val">UNMASKED / ACTIVE</span>
-                            </div>
                         </div>
                     </div>
 
-                    <!-- DYNAMIC ARTICLE BODY COPY (Strict Black/White) -->
+                    <!-- DYNAMIC ARTICLE BODY COPY -->
                     <div id="detail-body-text" class="detail-paragraphs">
                         <!-- Content Injected via Script -->
                     </div>
@@ -173,17 +165,14 @@
         });
 
         /* ==========================================================================
-           2. DUMMY ARTICLES DATA STORE WITH TAGS
+           2. DUMMY ARTICLES DATA STORE (MAX 2 TAGS PER ARTICLE)
            ========================================================================== */
         const articlesDB = {
             'art-1': {
                 title: '01 // The Four Burners Theory',
                 date: '[ 2026.09.18 ]',
-                metaId: '#001-4BURNERS',
                 timestamp: '2026-09-18T16:00:00Z',
-                tags: ['#FOUR-BURNERS', '#SYSTEMS', '#RECOVERY', '#UNMASKED'],
-                format: 'ESSAY // RECOVERY ARCHITECTURE',
-                status: 'UNMASKED // RECLAIMED',
+                tags: ['#FOUR-BURNERS', '#SYSTEMS'],
                 content: `
                     <p>Imagine your life is represented by a stove with four burners on it: <strong>Health</strong>, <strong>Work</strong>, <strong>Friends</strong>, and <strong>Family</strong>.</p>
                     <p>In order to be successful you have to cut off one of your burners. And in order to be truly exceptional, you have to cut off two.</p>
@@ -194,11 +183,8 @@
             'art-2': {
                 title: '02 // Spatial Geometry & Noise Isolation',
                 date: '[ 2026.09.12 ]',
-                metaId: '#002-SPATIAL-ART',
                 timestamp: '2026-09-12T10:30:00Z',
-                tags: ['#ASCII-ART', '#GEOMETRY', '#SPATIAL', '#RANDOM-CHAOS'],
-                format: 'ASCII / VECTOR CONCEPT ART',
-                status: 'EXPERIMENTAL // RAW',
+                tags: ['#ASCII-ART', '#GEOMETRY'],
                 content: `
                     <div class="ascii-art-block">
 +-------------------------------------------------------------+
@@ -221,11 +207,8 @@
             'art-3': {
                 title: '03 // AuDHD and the Cost of Carrying',
                 date: '[ 2026.09.04 ]',
-                metaId: '#003-AUDHD-BURN',
                 timestamp: '2026-09-04T08:15:00Z',
-                tags: ['#AUDHD', '#BURNOUT', '#EXECUTIVE-FUNCTION', '#BOUNDARIES'],
-                format: 'ESSAY // EXECUTIVE FUNCTION',
-                status: 'DRAFT // DECLASSIFIED',
+                tags: ['#AUDHD', '#BURNOUT'],
                 content: `
                     <p>Autistic-ADHD minds possess vast bursts of hyper-focus paired with sensitive executive regulation. When forced to mask and compensate for stagnant environments, executive burnout is catastrophic.</p>
                     <p>The only sustainable remedy is total spatial minimalism: ruthlessly stripping away unnecessary obligations, expectations, and emotional dead-weight.</p>
@@ -243,11 +226,8 @@
 
         const detailTitle = document.getElementById('detail-title');
         const detailDate = document.getElementById('detail-date');
-        const metaId = document.getElementById('meta-id');
         const metaTimestamp = document.getElementById('meta-timestamp');
         const metaTags = document.getElementById('meta-tags');
-        const metaFormat = document.getElementById('meta-format');
-        const metaStatus = document.getElementById('meta-status');
         const detailBody = document.getElementById('detail-body-text');
 
         // Handle item selection with brutalist blink & hero collapse
@@ -267,12 +247,11 @@
                     detailTitle.textContent = articleData.title;
                     detailDate.textContent = articleData.date;
                     metaTimestamp.textContent = articleData.timestamp;
-                    metaFormat.textContent = articleData.format;
-                    metaStatus.textContent = articleData.status;
                     detailBody.innerHTML = articleData.content;
 
-                    // Populate Tags
-                    metaTags.innerHTML = articleData.tags.map(t => `<span class="tag-badge">[ ${t} ]</span>`).join(' ');
+                    // Enforce max 2 tags strictly
+                    const activeTags = (articleData.tags || []).slice(0, 2);
+                    metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">[ ${t} ]</span>`).join(' ');
 
                     // 3. Collapse Hero to maximize reading space
                     heroWrapper.classList.add('hero-collapsed');

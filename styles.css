@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SLRG.XYZ // DUAL-THEME BRUTALIST DESIGN SYSTEM (V13)
+   SLRG.XYZ // DUAL-THEME BRUTALIST DESIGN SYSTEM (V15)
    ========================================================================= */
 
 /* 0. GOOGLE FONTS IMPORT */
@@ -152,7 +152,7 @@ body {
 }
 
 #hero-collapse-wrapper.hero-collapsed {
-    display: none !important; /* Fully collapses to maximize reading space */
+    display: none !important;
 }
 
 .header-divider {
@@ -192,7 +192,6 @@ body {
     min-height: 0;
     display: flex;
     flex-direction: column;
-    /* Clean internal padding: left is generous, right leaves space for clean scrollbar */
     padding: 18px 8px 18px 20px;
     overflow: hidden;
 }
@@ -201,11 +200,10 @@ body {
     flex: 1 1 0;
     overflow-y: auto;
     min-height: 0;
-    padding-right: 12px; /* Space between text and scrollbar */
+    padding-right: 12px;
     overscroll-behavior: contain;
 }
 
-/* Crisp Scrollbar aligned to card edge */
 .body-scroll-area::-webkit-scrollbar {
     width: 4px;
 }
@@ -298,20 +296,30 @@ body {
 
 /* --- DETAIL VIEW --- */
 .detail-header-nav {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1.5px solid var(--border-color);
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     margin-bottom: 16px;
 }
 
-/* 1. RAW UNBOXED BACK BUTTON */
+/* 2. WIDE DOTTED DIVIDER ABOVE TITLE */
+.detail-header-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 2px, transparent 2px, transparent 8px);
+}
+
 .nav-back-btn {
     background: transparent;
     border: none;
     padding: 0;
-    color: var(--accent-green); /* Raw text button */
+    color: var(--accent-green);
     font-family: var(--font-mono);
     font-size: 11px;
     font-weight: 700;
@@ -324,7 +332,7 @@ body {
     text-decoration: underline;
 }
 
-/* 2. GREEN ARTICLE DETAIL TITLE */
+/* 4. WHITE DETAIL TITLE */
 .detail-main-title {
     font-family: var(--font-mono);
     font-size: 18px;
@@ -332,19 +340,34 @@ body {
     text-transform: uppercase;
     line-height: 1.3;
     margin-bottom: 14px;
-    color: var(--accent-green); /* Green Title */
+    color: var(--text-color); /* White/text color */
     letter-spacing: -0.2px;
 }
 
-/* RAW METADATA BLOCK (DOTTED TOP AND BOTTOM ONLY) */
+/* 1. RAW METADATA BLOCK WITH WIDE DOTTED TOP AND BOTTOM */
 .raw-metadata-box {
-    border-top: 1.5px dotted var(--border-color);
-    border-bottom: 1.5px dotted var(--border-color);
-    border-left: none;
-    border-right: none;
-    padding: 10px 0;
+    position: relative;
+    padding: 12px 0;
     margin-bottom: 18px;
     background: transparent;
+}
+
+.raw-metadata-box::before,
+.raw-metadata-box::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 2px, transparent 2px, transparent 8px);
+}
+
+.raw-metadata-box::before {
+    top: 0;
+}
+
+.raw-metadata-box::after {
+    bottom: 0;
 }
 
 .metadata-heading {
@@ -353,29 +376,28 @@ body {
     font-weight: 700;
     color: var(--accent-green);
     letter-spacing: 1px;
-    margin-bottom: 6px;
-    border-bottom: none;
-    padding-bottom: 0;
+    margin-bottom: 8px;
 }
 
 .metadata-grid {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .meta-row {
     display: flex;
-    gap: 8px;
+    gap: 10px;
     font-family: var(--font-mono);
     font-size: 10.5px;
     flex-wrap: wrap;
 }
 
+/* 5. GREEN METADATA TITLES (KEYS) */
 .meta-key {
-    color: var(--muted-color);
+    color: var(--accent-green); /* Green Keys */
     font-weight: 700;
-    min-width: 85px;
+    min-width: 90px;
 }
 
 .meta-val {
@@ -384,7 +406,7 @@ body {
 }
 
 .meta-val-tags {
-    color: var(--accent-green);
+    color: var(--text-color);
     font-weight: 700;
     font-family: var(--font-mono);
     font-size: 10.5px;
@@ -392,11 +414,11 @@ body {
 
 .tag-badge {
     display: inline-block;
-    margin-right: 4px;
+    margin-right: 6px;
     color: var(--accent-green);
 }
 
-/* 6. STRICT MONOCHROMATIC ARTICLE PARAGRAPHS (NO BODY TEXT COLORS) */
+/* STRICT MONOCHROMATIC ARTICLE PARAGRAPHS */
 .detail-paragraphs {
     display: flex;
     flex-direction: column;
@@ -406,13 +428,13 @@ body {
 }
 
 .detail-paragraphs p {
-    color: var(--text-color); /* Strict black/white */
+    color: var(--text-color);
     opacity: 0.92;
 }
 
 .detail-paragraphs strong {
     font-weight: 700;
-    color: var(--text-color); /* Strict black/white, no green text highlights */
+    color: var(--text-color);
 }
 
 /* ASCII ART EXPERIMENT BLOCK */
