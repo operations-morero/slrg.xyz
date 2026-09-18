@@ -288,8 +288,10 @@ body {
 }
 
 .article-divider {
-    border-top: 1px solid var(--border-color);
-    opacity: 0.2;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    height: 1.5px;
+    border: none;
+    opacity: 0.35;
     width: 100%;
     margin-top: 6px;
 }
@@ -304,15 +306,16 @@ body {
     margin-bottom: 16px;
 }
 
-/* 2. WIDE DOTTED DIVIDER ABOVE TITLE */
+/* 1 & 2. MATCHING DASHED DIVIDER ABOVE TITLE */
 .detail-header-nav::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 2px, transparent 2px, transparent 8px);
+    height: 1.5px;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    opacity: 0.45;
 }
 
 .nav-back-btn {
@@ -344,7 +347,7 @@ body {
     letter-spacing: -0.2px;
 }
 
-/* 1. RAW METADATA BLOCK WITH WIDE DOTTED TOP AND BOTTOM */
+/* 1. RAW METADATA BLOCK WITH MATCHING DASHED TOP AND BOTTOM */
 .raw-metadata-box {
     position: relative;
     padding: 12px 0;
@@ -358,8 +361,9 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    height: 2px;
-    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 2px, transparent 2px, transparent 8px);
+    height: 1.5px;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    opacity: 0.45;
 }
 
 .raw-metadata-box::before {
@@ -370,11 +374,12 @@ body {
     bottom: 0;
 }
 
+/* 4. WHITE METADATA TITLE */
 .metadata-heading {
     font-family: var(--font-mono);
     font-size: 10px;
     font-weight: 700;
-    color: var(--accent-green);
+    color: var(--text-color); /* White title */
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
@@ -393,9 +398,9 @@ body {
     flex-wrap: wrap;
 }
 
-/* 5. GREEN METADATA TITLES (KEYS) */
+/* GREEN METADATA KEYS */
 .meta-key {
-    color: var(--accent-green); /* Green Keys */
+    color: var(--accent-green);
     font-weight: 700;
     min-width: 90px;
 }
@@ -412,10 +417,12 @@ body {
     font-size: 10.5px;
 }
 
+/* 3. WHITE TAGS WITHOUT BRACKETS */
 .tag-badge {
     display: inline-block;
-    margin-right: 6px;
-    color: var(--accent-green);
+    color: var(--text-color); /* White Tag */
+    font-family: var(--font-mono);
+    font-weight: 700;
 }
 
 /* STRICT MONOCHROMATIC ARTICLE PARAGRAPHS */

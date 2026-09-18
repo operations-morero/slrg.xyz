@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=15">
+    <link rel="stylesheet" href="styles.css?v=16">
 </head>
 <body>
 
@@ -249,9 +249,9 @@
                     metaTimestamp.textContent = articleData.timestamp;
                     detailBody.innerHTML = articleData.content;
 
-                    // Enforce max 2 tags strictly
+                    // Enforce max 2 tags strictly without brackets
                     const activeTags = (articleData.tags || []).slice(0, 2);
-                    metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">[ ${t} ]</span>`).join(' ');
+                    metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">${t}</span>`).join(' &nbsp; ');
 
                     // 3. Collapse Hero to maximize reading space
                     heroWrapper.classList.add('hero-collapsed');
