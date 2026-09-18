@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=23">
+    <link rel="stylesheet" href="styles.css?v=31">
 </head>
 <body>
 
@@ -43,29 +43,25 @@
             <!-- VIEW 1: ARTICLE INDEX LIST (2 CURATED ARTICLES) -->
             <div id="articles-list-view" class="body-scroll-area">
                 <div class="article-layout">
-                    
-                    <!-- ARTICLE 1: AUTISM IN PLAIN SIGHT -->
-                    <article class="article-item selectable" data-article-id="art-1">
+                    <!-- ARTICLE 01 -->
+                    <article class="article-item selectable" data-article-id="01">
                         <div class="article-header-row">
-                            <span class="article-date">[ 2026.09.18 ]</span>
-                            <span class="article-tags-preview">#AUTISM &nbsp;#CONSTRUCTION</span>
+                            <span class="article-date">2026.09.18</span>
+                            <span class="article-tags-preview">#AUTISM &nbsp; #CONSTRUCTION</span>
                         </div>
                         <h2 class="article-title">01 // Autism in Plain Sight</h2>
                         <p class="article-desc">Performing at a high level, visualising through pictures, and managing sensory burnout while hiding something hidden.</p>
                     </article>
 
-                    <div class="article-divider"></div>
-
-                    <!-- ARTICLE 2: THE FOUR BURNERS THEORY -->
-                    <article class="article-item selectable" data-article-id="art-2">
+                    <!-- ARTICLE 02 -->
+                    <article class="article-item selectable" data-article-id="02">
                         <div class="article-header-row">
-                            <span class="article-date">[ 2026.09.12 ]</span>
-                            <span class="article-tags-preview">#FOUR-BURNERS &nbsp;#SYSTEMS</span>
+                            <span class="article-date">[ 2026.09.18 ]</span>
+                            <span class="article-tags-preview">#SYSTEMS &nbsp; #ENERGY</span>
                         </div>
                         <h2 class="article-title">02 // The Four Burners Theory</h2>
-                        <p class="article-desc">The reality of energy constraints: why sustainable success demands cutting burners, not pretending you can heat all four.</p>
+                        <p class="article-desc">Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was a lie.</p>
                     </article>
-
                 </div>
             </div>
 
@@ -76,15 +72,20 @@
                 <div class="detail-sticky-header">
                     <div class="detail-header-nav">
                         <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
-                        <div class="detail-nav-actions">
-                            <button id="read-aloud-btn" class="nav-listen-btn" aria-label="Read article aloud">[ ▷ LISTEN ]</button>
-                            <span id="detail-date" class="article-date">[ 2026.09.18 ]</span>
+                        
+                        <!-- BRUTALIST AUDIO CONTROLS DECK IN TOP NAV -->
+                        <div class="audio-deck-actions">
+                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind 10 seconds">[ ⟲ -10S ]</button>
+                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">[ ▷ PLAY ]</button>
+                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Skip forward 10 seconds">[ ⟳ +10S ]</button>
+                            <button id="audio-btn-stop" class="audio-deck-btn" aria-label="Stop audio">[ ◼ STOP ]</button>
+                            <span id="audio-deck-status" class="audio-deck-status">[ 00 / 00 ]</span>
                         </div>
                     </div>
 
                     <h2 id="detail-title" class="detail-main-title">ARTICLE TITLE</h2>
 
-                    <!-- RAW METADATA BLOCK (TIMESTAMP & MAX 2 TAGS) -->
+                    <!-- RAW METADATA BLOCK -->
                     <div class="raw-metadata-box">
                         <div class="metadata-grid">
                             <div class="meta-row">
@@ -108,10 +109,10 @@
 
         </main>
 
-        <!-- FOOTER CARD -->
+        <!-- FOOTER CARD (CONSISTENT ACROSS ENTIRE SITE) -->
         <footer class="brutalist-card panel-footer">
-            <span class="footer-status">SYSTEM ARCHIVE // ALL RIGHTS RESERVED</span>
-            <span class="footer-coords">[ 52.4862° N, 1.8904° W ]</span>
+            <span class="footer-status">SLRG.XYZ // NOTTINGHAM</span>
+            <span class="footer-coords">[ 52.9548° N, 1.1581° W ]</span>
         </footer>
 
     </div>
@@ -158,51 +159,64 @@
            2. ARTICLES DATA STORE (EXACTLY 2 CURATED ARTICLES)
            ========================================================================== */
         const articlesDB = {
-            'art-1': {
-                title: '01 // Autism in Plain Sight',
-                date: '[ 2026.09.18 ]',
-                timestamp: '2026-09-18T12:00:00Z',
-                tags: ['#AUTISM', '#CONSTRUCTION'],
+            "01": {
+                title: "01 // Autism in Plain Sight",
+                date: "2026.09.18",
+                timestamp: "2026-09-18T12:00:00Z",
+                tags: ["#AUTISM","#CONSTRUCTION"],
                 content: `
                     <p>I didn't end up in construction by accident. As a child I remember looking up at buildings and bridges and couldn't stop thinking about how it got there? Engineering became one of my "special interest" and I was obsessed with understanding how things were built and how they worked.</p>
+
                     <p>My brain didn't allow me to just stop at the building. It needed to know the materials, the age, the architectural style, the ground conditions. It always has more questions because for some reason it needs all the details. It needs to understand each step before, how it connects, and why it exists. Which is honestly exhausting.</p>
+
                     <p>But it's the reason construction was a good career choice. It has rules, a clear sequence, and the work can speak for itself. Which matters, because sometimes I don't have access to words.</p>
+
                     <p>My brain works in pictures which helps with visualising what construction should look like, but not with explaining it to others. If I can't see it, I can't understand it. That's why I ask a lot of questions. Not to challenge, but to make it understandable. Sometimes that's seen as thorough, other times it's seen as difficult.</p>
+
                     <p>But I never had a problem working with operatives on site. I'd sketch, show images, get them to teach me their trade. We connected through actions, not words. It worked and I progressed quickly into management, which I found needs more of the skills I struggle with.</p>
+
                     <p>Sounds can be overwhelming, like the volume dial keeps turning up until it's physically painful. This makes it difficult to focus in meetings. The light in the office so bright your eyes are burning and watering, which makes it hard to work. Sometimes clothing feels like needles against your skin, so you fidget a lot and feel uncomfortable. Most people filter it out but I don't always have that option.</p>
+
                     <p>I'm extremely particular, a bit weird, but good at my job, so people tolerate it. You make sure your easy to work with, approachable, never judging. That's genuine. But it's also insurance. When you're different, it helps if people have a reason to keep you around. So you give them one. You show up and you do the work and help where you know you can without being asked.</p>
+
                     <p>But my entire career I didn't understand why I could solve really complex engineering problems but struggle with something as simple as putting my socks on in the morning. I wasn't diagnosed until I was an adult, so I had adapted without knowing what I was adapting to. I thought what I was going through was normal. But I have Level 1 Autism, which you wouldn't know from just looking at me. It's not the visual type of autism, it's the "high functioning" kind, but I'd describe it as sometimes high functioning.</p>
+
                     <p>From the outside, it looks consistent and high achieving. I turn up, I contribute, I deliver great work, and I love construction. What isn't visible is the amount of energy it takes to maintain it. Certain situations deplete my battery fast. Autistic burnout isn't just being tired, it's losing access to skills, speech, vision, the ability to think clearly. One day everything works. The next, it doesn't, so you build systems, rely on structure and routine, mask. That works, until it doesn't.</p>
+
                     <p>Most of the time, I've got it together. The rest of the time, I just make sure no one can tell.</p>
+
                     <p>I've learnt that Construction is full of people like me. Performing at a high level and managing something hidden at the same time.</p>
-                    <div class="article-source-bar">
-                        <a href="https://digitalconstructionplus.com/autism-in-construction-achieving-yet-hiding-in-plain-sight/" target="_blank" rel="noopener" class="article-source-link">[ READ ORIGINAL ON DIGITAL CONSTRUCTION PLUS ↗ ]</a>
-                    </div>
+
+                    <p>[ READ ORIGINAL ON DIGITAL CONSTRUCTION PLUS ↗ ](https://digitalconstructionplus.com/autism-in-construction-achieving-yet-hiding-in-plain-sight/)</p>
                 `
             },
-            'art-2': {
-                title: '02 // The Four Burners Theory',
-                date: '[ 2026.09.12 ]',
-                timestamp: '2026-09-12T16:00:00Z',
-                tags: ['#FOUR-BURNERS', '#SYSTEMS'],
+            "02": {
+                title: "02 // The Four Burners Theory",
+                date: "[ 2026.09.18 ]",
+                timestamp: "2026-09-18T16:00:00Z",
+                tags: ["#SYSTEMS","#ENERGY"],
                 content: `
-                    <p>Imagine your life is represented by a gas stove with four distinct burners on it: <strong>Health</strong>, <strong>Work</strong>, <strong>Friends</strong>, and <strong>Family</strong>.</p>
-                    
-                    <p>The core theory posits an inescapable reality of human energy: in order to be successful, you must cut off one burner. In order to be truly exceptional, you have to cut off two.</p>
-                    
-                    <p>Society conditions us to believe that a high-achieving life requires keeping all four burners roaring at maximum heat simultaneously. It is a mathematical impossibility. When you attempt to distribute equal pressure across all four quadrants, the flames flicker, heat dissipates, and nothing actually cooks. You end up in perpetual cognitive debt.</p>
-                    
-                    <p>For high-functioning and AuDHD individuals, the cost of a simmering burner is even higher. An unattended obligation is never truly off—it leaks background RAM, drains working memory, and triggers chronic low-grade anxiety. Leaving a burner on a "low simmer" doesn't conserve energy; it slowly suffocates executive function.</p>
-                    
-                    <p>The only sustainable strategy is conscious, ruthless burner management. You don't apologize for turning a burner off—you acknowledge the season you are in. When work and health require 100% of your gas, social obligations and draining family dynamics must be shut off completely.</p>
-                    
-                    <p>Turning off a burner is not failure or cruelty; it is the fundamental physics of spatial bandwidth and self-preservation. When the system demands output, you cut the gas to zero on everything that compromises your survival.</p>
+                    <p>The Four Burners Theory originally surfaced in a 2009 New Yorker piece by David Sedaris, sketched out on a napkin. Sometimes you learn a concept and you have no idea why your brain decides to store it. You just know it stuck, waiting in the background until real life forces you to confront the math.</p>
+
+                    <p>The theory is simple: imagine your life as a kitchen stove with four burners. One burner is your <strong>family</strong>, one is your <strong>friends</strong>, one is your <strong>health</strong>, and the last is your <strong>work</strong>.</p>
+
+                    <p>The rule of the stove is brutal: in order to be successful, you have to turn off one burner. In order to be very successful, you have to turn off two.</p>
+
+                    <p>We spend years pretending we can keep all four roaring at maximum heat simultaneously. Society tells you it’s a time management problem—that if you just wake up earlier, plan better, or push harder, you can heat the entire cooktop. It’s a lie.</p>
+
+                    <p>Life took a turn and all my burners went out this year. Foundations and connections that I'd spent years nurturing went cold. Outside of my bubble, it looked like I was having the best time of my life. That would also be a lie.</p>
+
+                    <p>On my recovery, I realized that leaving burners on a low simmer doesn’t save you. It just leaks gas, drains your cognitive bandwidth, and suffocates your executive function until there’s nothing left to spark.</p>
+
+                    <p>Gas isn't sustainable anyways. It's volatile, it flares up, and it runs out when you need it most. IRL I'll be moving to electric, but the underlying principle will always be the exact same: you have a finite energy. If you try to pull maximum wattage across four heavy elements at the same time, you trip the main breaker.</p>
+
+                    <p>Turning off a burner isn't failure—it's physics. You acknowledge the season you're in, manage the load, and stop apologizing for cutting the heat to what doesn't need to cook.</p>
                 `
             }
         };
 
         /* ==========================================================================
-           3. BLINK, HERO COLLAPSE, & LOAD SELECTION
+           3. DOM ELEMENTS & ARTICLE DETAIL BINDINGS
            ========================================================================== */
         const listView = document.getElementById('articles-list-view');
         const detailView = document.getElementById('article-detail-view');
@@ -210,55 +224,176 @@
         const heroWrapper = document.getElementById('hero-collapse-wrapper');
 
         const detailTitle = document.getElementById('detail-title');
-        const detailDate = document.getElementById('detail-date');
         const metaTimestamp = document.getElementById('meta-timestamp');
         const metaTags = document.getElementById('meta-tags');
         const detailBody = document.getElementById('detail-body-text');
 
-        const readAloudBtn = document.getElementById('read-aloud-btn');
-        let isSpeaking = false;
+        /* ==========================================================================
+           4. ROBUST BRUTALIST AUDIO PLAYER ENGINE (PLAY, PAUSE, REWIND, FORWARD)
+           ========================================================================== */
+        let audioSentences = [];
+        let currentSentenceIdx = 0;
+        let isAudioPlaying = false;
+        let isAudioPaused = false;
+        let cachedVoices = [];
 
-        function stopSpeaking() {
+        function loadVoices() {
+            if ('speechSynthesis' in window) {
+                cachedVoices = window.speechSynthesis.getVoices();
+            }
+        }
+        if ('speechSynthesis' in window) {
+            loadVoices();
+            window.speechSynthesis.onvoiceschanged = loadVoices;
+        }
+
+        const audioPlayBtn = document.getElementById('audio-btn-play');
+        const audioRewindBtn = document.getElementById('audio-btn-rewind');
+        const audioForwardBtn = document.getElementById('audio-btn-forward');
+        const audioStopBtn = document.getElementById('audio-btn-stop');
+        const audioStatus = document.getElementById('audio-deck-status');
+
+        function prepareAudioText() {
+            const cleanText = (detailTitle.textContent + '. ' + detailBody.innerText)
+                .replace(/\[\s*READ ORIGINAL[\s\S]*?\]/gi, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+
+            const rawSentences = cleanText.match(/[^.!?]+[.!?]+(\s|$)|[^.!?]+$/g) || [cleanText];
+            audioSentences = rawSentences.map(s => s.trim()).filter(s => s.length > 0);
+            currentSentenceIdx = 0;
+            updateAudioProgress();
+        }
+
+        function updateAudioProgress() {
+            if (!audioStatus) return;
+            if (audioSentences.length === 0) {
+                audioStatus.textContent = '[ 00 / 00 ]';
+                return;
+            }
+            const currentStr = String(Math.min(currentSentenceIdx + 1, audioSentences.length)).padStart(2, '0');
+            const totalStr = String(audioSentences.length).padStart(2, '0');
+            audioStatus.textContent = `[ ${currentStr} / ${totalStr} ]`;
+        }
+
+        function getBestVoice() {
+            if (!cachedVoices || cachedVoices.length === 0) {
+                if ('speechSynthesis' in window) cachedVoices = window.speechSynthesis.getVoices();
+            }
+            return (cachedVoices || []).find(v => (v.lang === 'en-GB' || v.lang.startsWith('en_GB')) && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Oliver') || v.name.includes('Serena')))
+                || (cachedVoices || []).find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('George') || v.name.includes('Daniel')))
+                || (cachedVoices || []).find(v => v.lang.startsWith('en'))
+                || null;
+        }
+
+        function playSentence(index) {
+            if (!('speechSynthesis' in window)) return;
+            if (index >= audioSentences.length) {
+                stopAudio();
+                return;
+            }
+
+            window.speechSynthesis.cancel();
+
+            currentSentenceIdx = index;
+            updateAudioProgress();
+
+            const textToSpeak = audioSentences[currentSentenceIdx];
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            utterance.rate = 0.95;
+            utterance.pitch = 1.0;
+
+            const selectedVoice = getBestVoice();
+            if (selectedVoice) utterance.voice = selectedVoice;
+
+            utterance.onend = function() {
+                if (isAudioPlaying && !isAudioPaused) {
+                    playSentence(currentSentenceIdx + 1);
+                }
+            };
+
+            utterance.onerror = function(e) {
+                if (e.error === 'canceled' || e.error === 'interrupted') return;
+                stopAudio();
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        function startAudio() {
+            if (audioSentences.length === 0) prepareAudioText();
+            isAudioPlaying = true;
+            isAudioPaused = false;
+            if (audioPlayBtn) {
+                audioPlayBtn.textContent = '[ ❚❚ PAUSE ]';
+                audioPlayBtn.classList.add('is-active');
+            }
+            playSentence(currentSentenceIdx);
+        }
+
+        function pauseAudio() {
+            if (!isAudioPlaying) return;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
             }
-            isSpeaking = false;
-            if (readAloudBtn) {
-                readAloudBtn.textContent = '[ ▷ LISTEN ]';
-                readAloudBtn.classList.remove('is-speaking');
+            isAudioPaused = true;
+            if (audioPlayBtn) {
+                audioPlayBtn.textContent = '[ ▷ RESUME ]';
+                audioPlayBtn.classList.remove('is-active');
             }
         }
 
-        if (readAloudBtn && 'speechSynthesis' in window) {
-            readAloudBtn.addEventListener('click', () => {
-                if (isSpeaking) {
-                    stopSpeaking();
+        function stopAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            isAudioPlaying = false;
+            isAudioPaused = false;
+            currentSentenceIdx = 0;
+            if (audioPlayBtn) {
+                audioPlayBtn.textContent = '[ ▷ PLAY ]';
+                audioPlayBtn.classList.remove('is-active');
+            }
+            updateAudioProgress();
+        }
+
+        if (audioPlayBtn) {
+            audioPlayBtn.addEventListener('click', () => {
+                if (!isAudioPlaying || isAudioPaused) {
+                    startAudio();
                 } else {
-                    window.speechSynthesis.cancel();
-                    
-                    // Extract text cleanly without HTML tags or source links
-                    const cleanText = (detailTitle.textContent + '. ' + detailBody.innerText)
-                        .replace(/\[\s*READ ORIGINAL[\s\S]*?\]/gi, '')
-                        .trim();
-                        
-                    const utterance = new SpeechSynthesisUtterance(cleanText);
-                    utterance.rate = 0.95;
-                    utterance.pitch = 1.0;
-
-                    const voices = window.speechSynthesis.getVoices();
-                    const englishVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('George') || v.name.includes('Arthur')));
-                    if (englishVoice) {
-                        utterance.voice = englishVoice;
-                    }
-
-                    utterance.onend = () => stopSpeaking();
-                    utterance.onerror = () => stopSpeaking();
-
-                    window.speechSynthesis.speak(utterance);
-                    isSpeaking = true;
-                    readAloudBtn.textContent = '[ ◼ STOP ]';
-                    readAloudBtn.classList.add('is-speaking');
+                    pauseAudio();
                 }
+            });
+        }
+
+        if (audioRewindBtn) {
+            audioRewindBtn.addEventListener('click', () => {
+                if (audioSentences.length === 0) prepareAudioText();
+                currentSentenceIdx = Math.max(0, currentSentenceIdx - 2);
+                if (isAudioPlaying && !isAudioPaused) {
+                    playSentence(currentSentenceIdx);
+                } else {
+                    updateAudioProgress();
+                }
+            });
+        }
+
+        if (audioForwardBtn) {
+            audioForwardBtn.addEventListener('click', () => {
+                if (audioSentences.length === 0) prepareAudioText();
+                currentSentenceIdx = Math.min(audioSentences.length - 1, currentSentenceIdx + 2);
+                if (isAudioPlaying && !isAudioPaused) {
+                    playSentence(currentSentenceIdx);
+                } else {
+                    updateAudioProgress();
+                }
+            });
+        }
+
+        if (audioStopBtn) {
+            audioStopBtn.addEventListener('click', () => {
+                stopAudio();
             });
         }
 
@@ -269,7 +404,7 @@
                 const articleData = articlesDB[articleId];
                 if (!articleData) return;
 
-                stopSpeaking();
+                stopAudio();
 
                 // 1. Terminal Blink effect
                 this.classList.add('item-blinking');
@@ -279,7 +414,6 @@
 
                     // 2. Populate Detail View
                     detailTitle.textContent = articleData.title;
-                    detailDate.textContent = articleData.date;
                     metaTimestamp.textContent = articleData.timestamp;
                     detailBody.innerHTML = articleData.content;
 
@@ -287,10 +421,13 @@
                     const activeTags = (articleData.tags || []).slice(0, 2);
                     metaTags.innerHTML = activeTags.map(t => `<span class="tag-badge">${t}</span>`).join(' &nbsp; ');
 
-                    // 3. Collapse Hero to maximize reading space
+                    // 3. Initialize Audio Sentences
+                    prepareAudioText();
+
+                    // 4. Collapse Hero to maximize reading space
                     heroWrapper.classList.add('hero-collapsed');
 
-                    // 4. Swap Views
+                    // 5. Swap Views
                     listView.classList.add('hidden');
                     detailView.classList.remove('hidden');
                     
@@ -302,7 +439,7 @@
 
         // Handle Back Button & Hero Expand
         backBtn.addEventListener('click', () => {
-            stopSpeaking();
+            stopAudio();
             backBtn.textContent = '[ LOADING... ]';
             setTimeout(() => {
                 backBtn.textContent = '[ < BACK TO ARCHIVE ]';

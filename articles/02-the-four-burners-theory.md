@@ -1,25 +1,28 @@
 ---
 id: "02"
 title: "02 // The Four Burners Theory"
-date: "2026.09.12"
-timestamp: "2026-09-12T16:00:00Z"
+date: "[ 2026.09.18 ]"
+timestamp: "2026-09-18T16:00:00Z"
 tags:
-  - "#FOUR-BURNERS"
   - "#SYSTEMS"
-source_url: ""
-summary: "The reality of energy constraints: why sustainable success demands cutting burners, not pretending you can heat all four."
+  - "#ENERGY"
+summary: "Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was a lie."
+source_link: ""
+source_title: ""
 ---
 
-# 02 // The Four Burners Theory
+The Four Burners Theory originally surfaced in a 2009 New Yorker piece by David Sedaris, sketched out on a napkin. Sometimes you learn a concept and you have no idea why your brain decides to store it. You just know it stuck, waiting in the background until real life forces you to confront the math.
 
-Imagine your life is represented by a gas stove with four distinct burners on it: **Health**, **Work**, **Friends**, and **Family**.
+The theory is simple: imagine your life as a kitchen stove with four burners. One burner is your **family**, one is your **friends**, one is your **health**, and the last is your **work**.
 
-The core theory posits an inescapable reality of human energy: in order to be successful, you must cut off one burner. In order to be truly exceptional, you have to cut off two.
+The rule of the stove is brutal: in order to be successful, you have to turn off one burner. In order to be very successful, you have to turn off two.
 
-Society conditions us to believe that a high-achieving life requires keeping all four burners roaring at maximum heat simultaneously. It is a mathematical impossibility. When you attempt to distribute equal pressure across all four quadrants, the flames flicker, heat dissipates, and nothing actually cooks. You end up in perpetual cognitive debt.
+We spend years pretending we can keep all four roaring at maximum heat simultaneously. Society tells you it’s a time management problem—that if you just wake up earlier, plan better, or push harder, you can heat the entire cooktop. It’s a lie.
 
-For high-functioning and AuDHD individuals, the cost of a simmering burner is even higher. An unattended obligation is never truly off—it leaks background RAM, drains working memory, and triggers chronic low-grade anxiety. Leaving a burner on a "low simmer" doesn't conserve energy; it slowly suffocates executive function.
+Life took a turn and all my burners went out this year. Foundations and connections that I'd spent years nurturing went cold. Outside of my bubble, it looked like I was having the best time of my life. That would also be a lie.
 
-The only sustainable strategy is conscious, ruthless burner management. You don't apologize for turning a burner off—you acknowledge the season you are in. When work and health require 100% of your gas, social obligations and draining family dynamics must be shut off completely.
+On my recovery, I realized that leaving burners on a low simmer doesn’t save you. It just leaks gas, drains your cognitive bandwidth, and suffocates your executive function until there’s nothing left to spark.
 
-Turning off a burner is not failure or cruelty; it is the fundamental physics of spatial bandwidth and self-preservation. When the system demands output, you cut the gas to zero on everything that compromises your survival.
+Gas isn't sustainable anyways. It's volatile, it flares up, and it runs out when you need it most. IRL I'll be moving to electric, but the underlying principle will always be the exact same: you have a finite energy. If you try to pull maximum wattage across four heavy elements at the same time, you trip the main breaker.
+
+Turning off a burner isn't failure—it's physics. You acknowledge the season you're in, manage the load, and stop apologizing for cutting the heat to what doesn't need to cook.
