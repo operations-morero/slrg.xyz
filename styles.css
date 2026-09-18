@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SLRG.XYZ // SPACIOUS BRUTALIST DESIGN SYSTEM (V9)
+   SLRG.XYZ // DUAL-THEME BRUTALIST DESIGN SYSTEM (V12)
    ========================================================================= */
 
 /* 0. GOOGLE FONTS IMPORT */
@@ -12,6 +12,7 @@
     --text-color: #050505;
     --border-color: #000000;
     --card-bg: #ffffff;
+    --muted-color: #555555;
     
     --accent-green: #009B3A; /* Jamaican Flag Green */
     --border-width: 2.5px;
@@ -28,6 +29,7 @@
     --text-color: #f7f7f7;
     --border-color: #ffffff;
     --card-bg: #111111;
+    --muted-color: #aaaaaa;
 }
 
 /* 2. BASE VIEWPORT LOCK */
@@ -45,19 +47,18 @@ html, body {
     height: 100vh;
     height: 100dvh;
     max-height: 100dvh;
-    overflow: hidden; /* Lock the outer viewport */
+    overflow: hidden;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 body {
-    /* Mathematically balanced margins: top, bottom, left, and right are all optically identical */
+    /* Mathematically balanced symmetrical margins */
     padding: 18px 12px 12px 18px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* Master flex wrapper holding the 3 distinct cards */
 .site-wrapper {
     width: 100%;
     max-width: 960px;
@@ -65,7 +66,7 @@ body {
     max-height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 14px; /* Equalized clean rhythm */
+    gap: 14px;
     overflow: hidden;
 }
 
@@ -83,17 +84,16 @@ body {
 }
 
 /* ==========================================================================
-   4. CARD 1: HEADER & HERO (INTEGRATED)
+   4. CARD 1: HEADER & HERO
    ========================================================================= */
 .panel-header {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    gap: 14px;
-    padding: 20px 22px;
+    gap: 12px;
+    padding: 18px 22px;
 }
 
-/* Top bar */
 .header-top-bar {
     display: flex;
     justify-content: space-between;
@@ -126,7 +126,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Theme Switch Button */
 .theme-toggle-btn {
     background: transparent;
     border: none;
@@ -148,16 +147,15 @@ body {
     width: 100%;
 }
 
-/* Integrated Hero content */
 .hero-content {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .hero-large-text {
     font-family: var(--font-mono);
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     line-height: 1.35;
     text-transform: uppercase;
@@ -166,22 +164,22 @@ body {
 
 .hero-title {
     font-family: var(--font-sans);
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 400;
     color: var(--text-color);
     opacity: 0.88;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   5. CARD 2: MAIN BODY (SPACIOUS VERTICAL ARTICLE LAYOUT)
+   5. CARD 2: MAIN BODY (INDEX & DETAIL VIEWS)
    ========================================================================= */
 .panel-body {
     flex: 1 1 0;
     min-height: 0;
     display: flex;
     flex-direction: column;
-    padding: 22px 24px;
+    padding: 20px 22px;
     overflow: hidden;
 }
 
@@ -189,26 +187,26 @@ body {
     flex: 1 1 0;
     overflow-y: auto;
     min-height: 0;
-    padding-right: 8px;
+    padding-right: 6px;
     overscroll-behavior: contain;
 }
 
-/* Custom Minimalist Scrollbar */
 .body-scroll-area::-webkit-scrollbar {
     width: 5px;
-}
-.body-scroll-area::-webkit-scrollbar-track {
-    background: transparent;
 }
 .body-scroll-area::-webkit-scrollbar-thumb {
     background-color: var(--accent-green);
 }
 
-/* Simple, spacious vertical article layout */
+.hidden {
+    display: none !important;
+}
+
+/* --- LIST VIEW --- */
 .article-layout {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Comfortable breathing space */
+    gap: 18px;
     width: 100%;
 }
 
@@ -216,11 +214,40 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    padding: 4px;
+    transition: background-color 0.1s ease;
 }
 
-.article-status {
+.article-item.selectable {
+    cursor: pointer;
+}
+
+/* Brutalist Selection Blink Effect */
+.article-item.item-blinking {
+    background-color: var(--accent-green) !important;
+    color: #ffffff !important;
+}
+.article-item.item-blinking * {
+    color: #ffffff !important;
+}
+
+.article-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.article-date {
     font-family: var(--font-mono);
     font-size: 11px;
+    font-weight: 700;
+    color: var(--accent-green);
+    letter-spacing: 0.5px;
+}
+
+.article-action {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
     font-weight: 700;
     color: var(--accent-green);
     letter-spacing: 0.5px;
@@ -237,17 +264,130 @@ body {
 
 .article-desc {
     font-family: var(--font-sans);
-    font-size: 13.5px;
+    font-size: 13px;
     color: var(--text-color);
     opacity: 0.88;
-    line-height: 1.6; /* Unhurried reading line height */
+    line-height: 1.55;
 }
 
 .article-divider {
     border-top: 1px solid var(--border-color);
     opacity: 0.2;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 6px;
+}
+
+/* --- DETAIL VIEW --- */
+.detail-header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid var(--border-color);
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+}
+
+.nav-back-btn {
+    background: transparent;
+    border: 1.5px solid var(--border-color);
+    color: var(--text-color);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px 10px;
+    letter-spacing: 0.5px;
+}
+
+.nav-back-btn:hover {
+    background-color: var(--accent-green);
+    color: #ffffff;
+    border-color: var(--accent-green);
+}
+
+.detail-main-title {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+/* RAW METADATA BLOCK */
+.raw-metadata-box {
+    border: 1.5px solid var(--border-color);
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    background: rgba(0, 155, 58, 0.04);
+}
+
+.metadata-heading {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-green);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 4px;
+}
+
+.metadata-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.meta-row {
+    display: flex;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+}
+
+.meta-key {
+    color: var(--muted-color);
+    font-weight: 700;
+    min-width: 85px;
+}
+
+.meta-val {
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* DETAIL PARAGRAPHS */
+.detail-paragraphs {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.detail-paragraphs p {
+    color: var(--text-color);
+    opacity: 0.92;
+}
+
+.detail-paragraphs strong {
+    font-weight: 700;
+    color: var(--accent-green);
+}
+
+/* ASCII ART EXPERIMENT BLOCK */
+.ascii-art-block {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    line-height: 1.25;
+    white-space: pre;
+    overflow-x: auto;
+    padding: 12px;
+    border: 1.5px solid var(--accent-green);
+    background-color: rgba(0, 155, 58, 0.06);
+    color: var(--accent-green);
+    margin: 8px 0;
 }
 
 /* ==========================================================================
@@ -263,7 +403,7 @@ body {
     color: var(--text-color);
     opacity: 0.75;
     flex-shrink: 0;
-    padding: 14px 22px;
+    padding: 12px 22px;
 }
 
 /* ==========================================================================
@@ -271,7 +411,7 @@ body {
    ========================================================================= */
 @media (min-width: 768px) {
     body {
-        padding: 28px 22px 22px 28px; /* Optically identical 28px outer margins */
+        padding: 28px 22px 22px 28px;
     }
 
     .site-wrapper {
@@ -279,16 +419,11 @@ body {
     }
 
     .brutalist-card {
-        padding: 24px 28px;
-    }
-
-    .panel-header {
-        padding: 24px 28px;
-        gap: 16px;
+        padding: 22px 26px;
     }
 
     .logo {
-        font-size: 24px;
+        font-size: 22px;
     }
 
     .tagline {
@@ -296,31 +431,26 @@ body {
     }
 
     .hero-large-text {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .hero-title {
-        font-size: 15px;
-    }
-
-    .panel-body {
-        padding: 28px 32px;
-    }
-
-    .article-layout {
-        gap: 26px;
+        font-size: 14px;
     }
 
     .article-title {
-        font-size: 17px;
+        font-size: 16px;
     }
 
-    .article-desc {
-        font-size: 14.5px;
+    .detail-main-title {
+        font-size: 20px;
     }
 
-    .panel-footer {
-        font-size: 12px;
-        padding: 16px 28px;
+    .detail-paragraphs {
+        font-size: 15px;
+    }
+
+    .ascii-art-block {
+        font-size: 11.5px;
     }
 }
