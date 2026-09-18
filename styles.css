@@ -303,17 +303,31 @@ body {
     margin-top: 6px;
 }
 
-/* --- DETAIL VIEW --- */
+/* --- DETAIL VIEW (STICKY HEADER + SCROLLABLE BODY) --- */
+.detail-view-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+.detail-sticky-header {
+    flex-shrink: 0;
+    background: var(--bg-card);
+    z-index: 5;
+    padding-bottom: 2px;
+}
+
 .detail-header-nav {
     position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
-/* 1 & 2. MATCHING DASHED DIVIDER ABOVE TITLE */
+/* MATCHING DASHED DIVIDER ABOVE TITLE */
 .detail-header-nav::after {
     content: '';
     position: absolute;
@@ -322,7 +336,7 @@ body {
     right: 0;
     height: 1.5px;
     background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
-    opacity: 0.45;
+    opacity: 0.35;
 }
 
 .nav-back-btn {
@@ -342,53 +356,67 @@ body {
     text-decoration: underline;
 }
 
-/* 4. WHITE DETAIL TITLE */
+.detail-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* BRUTALIST LISTEN BUTTON */
+.nav-listen-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    padding: 3px 8px;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    outline: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.nav-listen-btn:hover {
+    background-color: rgba(0, 155, 58, 0.15);
+}
+
+.nav-listen-btn.is-speaking {
+    background-color: var(--accent-green);
+    color: var(--bg-color);
+}
+
+/* WHITE DETAIL TITLE */
 .detail-main-title {
     font-family: var(--font-mono);
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1.3;
-    margin-bottom: 14px;
-    color: var(--text-color); /* White/text color */
+    margin-bottom: 10px;
+    color: var(--text-color);
     letter-spacing: -0.2px;
 }
 
-/* 1. RAW METADATA BLOCK WITH MATCHING DASHED TOP AND BOTTOM */
+/* RAW METADATA BLOCK: NO TOP DIVIDER, SINGLE DASHED BOTTOM DIVIDER */
 .raw-metadata-box {
     position: relative;
-    padding: 12px 0;
-    margin-bottom: 18px;
+    padding: 2px 0 12px 0;
+    margin-bottom: 0;
     background: transparent;
 }
 
-.raw-metadata-box::before,
 .raw-metadata-box::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
+    bottom: 0;
     height: 1.5px;
     background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
-    opacity: 0.45;
-}
-
-.raw-metadata-box::before {
-    top: 0;
-}
-
-.raw-metadata-box::after {
-    bottom: 0;
-}
-
-/* 4. WHITE METADATA TITLE */
-.metadata-heading {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--text-color); /* White title */
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    opacity: 0.35;
 }
 
 .metadata-grid {
@@ -424,53 +452,59 @@ body {
     font-size: 10.5px;
 }
 
-/* 3. WHITE TAGS WITHOUT BRACKETS */
+/* WHITE TAGS WITHOUT BRACKETS */
 .tag-badge {
     display: inline-block;
-    color: var(--text-color); /* White Tag */
+    color: var(--text-color);
     font-family: var(--font-mono);
     font-weight: 700;
 }
 
-/* STRICT MONOCHROMATIC ARTICLE PARAGRAPHS */
-.detail-paragraphs {
+/* SCROLLABLE ARTICLE BODY WITH PARAGRAPH SPACING */
+.detail-body-paragraphs {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    font-size: 14px;
-    line-height: 1.65;
+    padding: 16px 2px 24px 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    -webkit-overflow-scrolling: touch;
 }
 
-.detail-paragraphs p {
+.detail-body-paragraphs p {
     color: var(--text-color);
-    opacity: 0.92;
+    opacity: 0.94;
+    margin: 0 0 16px 0;
 }
 
-.detail-paragraphs strong {
+.detail-body-paragraphs p:last-child {
+    margin-bottom: 0;
+}
+
+.detail-body-paragraphs strong {
     font-weight: 700;
     color: var(--text-color);
 }
 
-/* ASCII ART EXPERIMENT BLOCK */
-.ascii-art-block {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    line-height: 1.25;
-    white-space: pre;
-    overflow-x: auto;
-    padding: 12px;
-    border: 1.5px solid var(--accent-green);
-    background-color: rgba(0, 155, 58, 0.06);
-    color: var(--accent-green);
-    margin: 8px 0;
+/* EXTERNAL ARTICLE SOURCE LINK WITH MATCHING DASHED DIVIDER */
+.article-source-bar {
+    position: relative;
+    margin-top: 20px;
+    padding-top: 14px;
+    opacity: 0.85;
 }
 
-/* EXTERNAL ARTICLE SOURCE LINK */
-.article-source-bar {
-    margin-top: 24px;
-    padding-top: 14px;
-    border-top: 1.5px dashed var(--border-color);
-    opacity: 0.85;
+.article-source-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    opacity: 0.35;
 }
 
 .article-source-link {

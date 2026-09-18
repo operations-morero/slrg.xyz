@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=22">
+    <link rel="stylesheet" href="styles.css?v=23">
 </head>
 <body>
 
@@ -70,19 +70,22 @@
             </div>
 
             <!-- VIEW 2: FULL ARTICLE / ARTWORK DETAIL VIEWER -->
-            <div id="article-detail-view" class="body-scroll-area hidden">
+            <div id="article-detail-view" class="detail-view-container hidden">
                 
-                <div class="detail-header-nav">
-                    <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
-                    <span id="detail-date" class="article-date">[ 2026.09.18 ]</span>
-                </div>
+                <!-- STICKY HEADER (STAYS FIXED WHILE BODY SCROLLS) -->
+                <div class="detail-sticky-header">
+                    <div class="detail-header-nav">
+                        <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
+                        <div class="detail-nav-actions">
+                            <button id="read-aloud-btn" class="nav-listen-btn" aria-label="Read article aloud">[ ▷ LISTEN ]</button>
+                            <span id="detail-date" class="article-date">[ 2026.09.18 ]</span>
+                        </div>
+                    </div>
 
-                <div class="article-detail-content">
                     <h2 id="detail-title" class="detail-main-title">ARTICLE TITLE</h2>
 
                     <!-- RAW METADATA BLOCK (TIMESTAMP & MAX 2 TAGS) -->
                     <div class="raw-metadata-box">
-                        <div class="metadata-heading">[ METADATA ]</div>
                         <div class="metadata-grid">
                             <div class="meta-row">
                                 <span class="meta-key">TIMESTAMP:</span>
@@ -94,11 +97,11 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- MAIN ARTICLE BODY TEXT -->
-                    <div id="detail-body-text" class="detail-body-paragraphs">
-                        <!-- Populated dynamically via JS -->
-                    </div>
+                <!-- MAIN ARTICLE BODY TEXT (SCROLLS UNDER STICKY HEADER) -->
+                <div id="detail-body-text" class="detail-body-paragraphs">
+                    <!-- Populated dynamically via JS -->
                 </div>
 
             </div>
@@ -212,12 +215,61 @@
         const metaTags = document.getElementById('meta-tags');
         const detailBody = document.getElementById('detail-body-text');
 
+        const readAloudBtn = document.getElementById('read-aloud-btn');
+        let isSpeaking = false;
+
+        function stopSpeaking() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+            isSpeaking = false;
+            if (readAloudBtn) {
+                readAloudBtn.textContent = '[ ▷ LISTEN ]';
+                readAloudBtn.classList.remove('is-speaking');
+            }
+        }
+
+        if (readAloudBtn && 'speechSynthesis' in window) {
+            readAloudBtn.addEventListener('click', () => {
+                if (isSpeaking) {
+                    stopSpeaking();
+                } else {
+                    window.speechSynthesis.cancel();
+                    
+                    // Extract text cleanly without HTML tags or source links
+                    const cleanText = (detailTitle.textContent + '. ' + detailBody.innerText)
+                        .replace(/\[\s*READ ORIGINAL[\s\S]*?\]/gi, '')
+                        .trim();
+                        
+                    const utterance = new SpeechSynthesisUtterance(cleanText);
+                    utterance.rate = 0.95;
+                    utterance.pitch = 1.0;
+
+                    const voices = window.speechSynthesis.getVoices();
+                    const englishVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('George') || v.name.includes('Arthur')));
+                    if (englishVoice) {
+                        utterance.voice = englishVoice;
+                    }
+
+                    utterance.onend = () => stopSpeaking();
+                    utterance.onerror = () => stopSpeaking();
+
+                    window.speechSynthesis.speak(utterance);
+                    isSpeaking = true;
+                    readAloudBtn.textContent = '[ ◼ STOP ]';
+                    readAloudBtn.classList.add('is-speaking');
+                }
+            });
+        }
+
         // Handle item selection with brutalist blink & hero collapse
         document.querySelectorAll('.selectable').forEach(item => {
             item.addEventListener('click', function() {
                 const articleId = this.getAttribute('data-article-id');
                 const articleData = articlesDB[articleId];
                 if (!articleData) return;
+
+                stopSpeaking();
 
                 // 1. Terminal Blink effect
                 this.classList.add('item-blinking');
@@ -241,13 +293,16 @@
                     // 4. Swap Views
                     listView.classList.add('hidden');
                     detailView.classList.remove('hidden');
-                    detailView.scrollTop = 0;
+                    
+                    // Reset scroll position of body text
+                    detailBody.scrollTop = 0;
                 }, 200);
             });
         });
 
         // Handle Back Button & Hero Expand
         backBtn.addEventListener('click', () => {
+            stopSpeaking();
             backBtn.textContent = '[ LOADING... ]';
             setTimeout(() => {
                 backBtn.textContent = '[ < BACK TO ARCHIVE ]';
