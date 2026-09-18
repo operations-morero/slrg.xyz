@@ -336,12 +336,15 @@ body {
     letter-spacing: -0.2px;
 }
 
-/* RAW METADATA BLOCK */
+/* RAW METADATA BLOCK (DOTTED TOP AND BOTTOM ONLY) */
 .raw-metadata-box {
-    border: 1.5px solid var(--border-color);
-    padding: 12px 14px;
+    border-top: 1.5px dotted var(--border-color);
+    border-bottom: 1.5px dotted var(--border-color);
+    border-left: none;
+    border-right: none;
+    padding: 10px 0;
     margin-bottom: 18px;
-    background: rgba(0, 155, 58, 0.04);
+    background: transparent;
 }
 
 .metadata-heading {
@@ -350,9 +353,9 @@ body {
     font-weight: 700;
     color: var(--accent-green);
     letter-spacing: 1px;
-    margin-bottom: 8px;
-    border-bottom: 1px dashed var(--border-color);
-    padding-bottom: 4px;
+    margin-bottom: 6px;
+    border-bottom: none;
+    padding-bottom: 0;
 }
 
 .metadata-grid {
