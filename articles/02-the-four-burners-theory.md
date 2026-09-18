@@ -6,7 +6,7 @@ timestamp: "2026-09-18T16:00:00Z"
 tags:
   - "#SYSTEMS"
   - "#ENERGY"
-summary: "Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was a lie."
+summary: "Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was also a lie."
 source_link: ""
 source_title: ""
 ---
@@ -19,7 +19,7 @@ The rule of the stove is brutal: in order to be successful, you have to turn off
 
 We spend years pretending we can keep all four roaring at maximum heat simultaneously. Society tells you it’s a time management problem—that if you just wake up earlier, plan better, or push harder, you can heat the entire cooktop. It’s a lie.
 
-Life took a turn and all my burners went out this year. Foundations and connections that I'd spent years nurturing went cold. Outside of my bubble, it looked like I was having the best time of my life. That would also be a lie.
+Life took a turn and all my burners went out this year. Foundations and connections that I'd spent years nurturing went cold. Outside of my bubble, it looked like I was having the best time of my life. That was also a lie.
 
 On my recovery, I realized that leaving burners on a low simmer doesn’t save you. It just leaks gas, drains your cognitive bandwidth, and suffocates your executive function until there’s nothing left to spark.
 
