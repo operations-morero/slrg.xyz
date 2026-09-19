@@ -131,26 +131,23 @@ function syncAndBuild() {
 
     // 3. Generate HTML Archive list
     const listHtml = articles.map(art => {
-        const tagsPreview = art.tags.join(' ');
         const isDraft = art.status === 'draft';
         if (isDraft) {
             return `                    <!-- ARTICLE ${art.id} (LOCKED DRAFT) -->
                     <article class="article-item is-draft" data-article-id="${art.id}">
-                        <div class="article-header-row">
-                            <span class="article-date draft-date">🔒 LOCKED</span>
-                            <span class="article-tags-preview">${tagsPreview}</span>
+                        <div class="article-title-row">
+                            <h2 class="article-title">${art.title}</h2>
+                            <span class="article-date draft-lock">🔒</span>
                         </div>
-                        <h2 class="article-title">${art.title}</h2>
                         <p class="article-desc">${art.summary}</p>
                     </article>`;
         }
         return `                    <!-- ARTICLE ${art.id} -->
                     <article class="article-item selectable" data-article-id="${art.id}">
-                        <div class="article-header-row">
+                        <div class="article-title-row">
+                            <h2 class="article-title">${art.title}</h2>
                             <span class="article-date">${art.date}</span>
-                            <span class="article-tags-preview">${tagsPreview}</span>
                         </div>
-                        <h2 class="article-title">${art.title}</h2>
                         <p class="article-desc">${art.summary}</p>
                     </article>`;
     }).join('\n\n                    <div class="article-divider"></div>\n\n');

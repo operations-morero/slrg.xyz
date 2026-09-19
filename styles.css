@@ -279,7 +279,7 @@ body {
 ::-webkit-scrollbar-track-piece,
 ::-webkit-scrollbar-corner {
     background: transparent !important;
-    margin: 12px 0 !important;
+    margin: 0 !important; /* Aligned precisely to full top and bottom of scroll area */
     border: none !important;
     border-radius: 0 !important;
     -webkit-border-radius: 0 !important;
@@ -347,45 +347,11 @@ body {
     color: #ffffff !important;
 }
 
-.article-header-row {
+.article-title-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 4px;
-}
-
-.article-date {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent-green);
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-@keyframes strobe-red {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.25;
-    }
-}
-
-.article-date.draft-date {
-    color: var(--accent-red) !important;
-    animation: strobe-red 1.8s infinite ease-in-out;
-    letter-spacing: 0.8px;
-    user-select: none;
-}
-
-.article-tags-preview {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    font-weight: 700;
-    color: var(--muted-color);
-    letter-spacing: 0.5px;
+    align-items: baseline;
+    gap: 12px;
 }
 
 .article-title {
@@ -396,13 +362,44 @@ body {
     line-height: 1.3;
     color: var(--text-color);
     letter-spacing: -0.2px;
+    margin: 0;
+    flex: 1 1 auto;
+}
+
+.article-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--accent-green);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.article-date.draft-lock {
+    color: var(--accent-red) !important;
+    font-size: 13px;
+    user-select: none;
+    line-height: 1;
 }
 
 .article-desc {
     font-size: 13px;
     line-height: 1.45;
-    color: var(--text-color);
-    opacity: 0.85;
+    margin: 0;
+}
+
+/* LIVE / UNLOCKED: Green teaser text */
+.article-item.selectable .article-desc {
+    color: var(--accent-green);
+    opacity: 0.95;
+}
+
+/* LOCKED DRAFT: Red teaser text */
+.article-item.is-draft .article-desc {
+    color: var(--accent-red);
+    opacity: 0.95;
 }
 
 /* HIDE DASHED ARTICLE LIST DIVIDER (MAINTAIN CLEAN GAP SPACING) */
