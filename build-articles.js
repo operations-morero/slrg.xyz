@@ -137,7 +137,7 @@ function syncAndBuild() {
                     <article class="article-item is-draft" data-article-id="${art.id}">
                         <div class="article-title-row">
                             <h2 class="article-title">${art.title}</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">${art.summary}</p>
                     </article>`;

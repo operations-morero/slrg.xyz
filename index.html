@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=49">
+    <link rel="stylesheet" href="styles.css?v=50">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V56MF1NBR6"></script>
@@ -16,6 +16,9 @@
 
       gtag('config', 'G-V56MF1NBR6');
     </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -34,13 +37,13 @@
                 <div class="header-actions">
                     <div class="header-actions-row">
                         <!-- Interactive Refresh Button -->
-                        <button id="refresh-btn" class="header-action-btn" aria-label="Refresh and reload articles">⟳</button>
+                        <button id="refresh-btn" class="header-action-btn" aria-label="Refresh and reload articles"><i data-lucide="rotate-cw" class="icon-lucide"></i></button>
                         <!-- Interactive Theme Toggle Button -->
-                        <button id="theme-toggle" class="header-action-btn header-theme-btn" aria-label="Toggle Theme">☼</button>
+                        <button id="theme-toggle" class="header-action-btn header-theme-btn" aria-label="Toggle Theme"><i id="theme-icon" data-lucide="sun" class="icon-lucide"></i></button>
                     </div>
                     <div class="header-actions-subrow">
                         <!-- Buy Me a Coffee / Support Icon -->
-                        <a id="coffee-btn" href="https://buymeacoffee.com/slrg" target="_blank" rel="noopener noreferrer" class="header-action-btn header-coffee-btn" aria-label="Buy Me a Coffee">☕</a>
+                        <a id="coffee-btn" href="https://buymeacoffee.com/slrg" target="_blank" rel="noopener noreferrer" class="header-action-btn header-coffee-btn" aria-label="Buy Me a Coffee"><i data-lucide="coffee" class="icon-lucide"></i></a>
                     </div>
                 </div>
             </div>
@@ -89,7 +92,7 @@
                     <article class="article-item is-draft" data-article-id="03">
                         <div class="article-title-row">
                             <h2 class="article-title">03 // New Height Trauma</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">Processing the psychological impact of elevation, vertigo, and structural boundaries.</p>
                     </article>
@@ -100,7 +103,7 @@
                     <article class="article-item is-draft" data-article-id="04">
                         <div class="article-title-row">
                             <h2 class="article-title">04 // Existential Problem Solving</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">Deconstructing core paradoxes and resolving paralysis through structural elimination.</p>
                     </article>
@@ -111,7 +114,7 @@
                     <article class="article-item is-draft" data-article-id="05">
                         <div class="article-title-row">
                             <h2 class="article-title">05 // What's Lewculture Anyway?</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">Deconstructing the origins, language, and ethos behind Lewculture.</p>
                     </article>
@@ -122,7 +125,7 @@
                     <article class="article-item is-draft" data-article-id="06">
                         <div class="article-title-row">
                             <h2 class="article-title">06 // Hello World</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">Rebooting the interface, stripping the static, and making first contact with a clean slate.</p>
                     </article>
@@ -133,9 +136,20 @@
                     <article class="article-item is-draft" data-article-id="07">
                         <div class="article-title-row">
                             <h2 class="article-title">07 // A Self-Destroying Prophecy</h2>
-                            <span class="article-date draft-lock">🔒</span>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
                         </div>
                         <p class="article-desc">Anticipating the collapse, engineering the safeguards, and watching the predicted failure dismantle itself.</p>
+                    </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 08 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="08">
+                        <div class="article-title-row">
+                            <h2 class="article-title">08 // Not Everything is for Everyone</h2>
+                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
+                        </div>
+                        <p class="article-desc">Rejecting mass appeal to preserve signal integrity and focus on high-fidelity alignment.</p>
                     </article>
                 </div>
             </div>
@@ -146,14 +160,14 @@
                 <!-- STICKY HEADER (STAYS FIXED WHILE BODY SCROLLS) -->
                 <div class="detail-sticky-header">
                     <div class="detail-header-nav">
-                        <button id="back-btn" class="nav-back-btn" aria-label="Back to archive">←</button>
+                        <button id="back-btn" class="nav-back-btn" aria-label="Back to archive"><i data-lucide="arrow-left" class="icon-lucide"></i></button>
                         
                         <!-- BRUTALIST AUDIO CONTROLS (OLD SCHOOL RETRO TAPE DECK) -->
                         <div class="audio-deck-pill">
                             <span class="pill-bracket">[</span>
-                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind">◁◁</button>
-                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause">▷</button>
-                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Fast Forward">▷▷</button>
+                            <button id="audio-btn-rewind" class="audio-deck-btn" aria-label="Rewind"><i data-lucide="skip-back" class="icon-lucide"></i></button>
+                            <button id="audio-btn-play" class="audio-deck-btn audio-deck-btn-primary" aria-label="Play or Pause"><i id="audio-icon-play" data-lucide="play" class="icon-lucide"></i></button>
+                            <button id="audio-btn-forward" class="audio-deck-btn" aria-label="Fast Forward"><i data-lucide="skip-forward" class="icon-lucide"></i></button>
                             <span class="pill-bracket">]</span>
                         </div>
                     </div>
@@ -343,6 +357,17 @@
 
                     <p>When you spend your life managing hyper-vigilance and pattern recognition, you don't wait for systems to fail—you map every fault line in advance and build the counter-weights into the bedrock.</p>
                 `
+            },
+            "08": {
+                title: "08 // Not Everything is for Everyone",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T10:00:00Z",
+                tags: ["#PERSPECTIVE","#SYSTEMS"],
+                content: `
+                    <p>Trying to build for everyone dilutes the architecture until it serves no one deeply.</p>
+
+                    <p>When you stop optimizing for universal consensus, you gain the bandwidth to build with precision for the few who actually understand the frequency.</p>
+                `
             }
         };
 
@@ -436,14 +461,24 @@
             window.speechSynthesis.speak(utterance);
         }
 
+        function updateAudioPlayIcon(isPlaying) {
+            if (!audioPlayBtn) return;
+            audioPlayBtn.innerHTML = isPlaying
+                ? '<i id="audio-icon-play" data-lucide="pause" class="icon-lucide"></i>'
+                : '<i id="audio-icon-play" data-lucide="play" class="icon-lucide"></i>';
+            if (isPlaying) {
+                audioPlayBtn.classList.add('is-active');
+            } else {
+                audioPlayBtn.classList.remove('is-active');
+            }
+            if (window.lucide) lucide.createIcons();
+        }
+
         function startAudio() {
             if (audioSentences.length === 0) prepareAudioText();
             isAudioPlaying = true;
             isAudioPaused = false;
-            if (audioPlayBtn) {
-                audioPlayBtn.textContent = '❚❚';
-                audioPlayBtn.classList.add('is-active');
-            }
+            updateAudioPlayIcon(true);
             if (typeof gtag === 'function') {
                 gtag('event', 'audio_play', {
                     article_title: detailTitle.textContent
@@ -458,10 +493,7 @@
                 window.speechSynthesis.cancel();
             }
             isAudioPaused = true;
-            if (audioPlayBtn) {
-                audioPlayBtn.textContent = '▷';
-                audioPlayBtn.classList.remove('is-active');
-            }
+            updateAudioPlayIcon(false);
         }
 
         function stopAudio() {
@@ -471,10 +503,7 @@
             isAudioPlaying = false;
             isAudioPaused = false;
             currentSentenceIdx = 0;
-            if (audioPlayBtn) {
-                audioPlayBtn.textContent = '▷';
-                audioPlayBtn.classList.remove('is-active');
-            }
+            updateAudioPlayIcon(false);
         }
 
         if (audioPlayBtn) {
@@ -552,6 +581,8 @@
                     
                     // Reset scroll position of body text
                     detailBody.scrollTop = 0;
+
+                    if (window.lucide) lucide.createIcons();
                 }, 200);
             });
         });
@@ -574,6 +605,7 @@
             listView.classList.remove('hidden');
             heroWrapper.classList.remove('hero-collapsed');
             listView.scrollTop = 0;
+            if (window.lucide) lucide.createIcons();
         }
 
         // Handle Back Button & Hero Expand
@@ -581,7 +613,8 @@
             stopAudio();
             backBtn.textContent = '…';
             setTimeout(() => {
-                backBtn.textContent = '←';
+                backBtn.innerHTML = '<i data-lucide="arrow-left" class="icon-lucide"></i>';
+                if (window.lucide) lucide.createIcons();
                 returnToHome();
             }, 80);
         });
@@ -602,11 +635,46 @@
         const refreshBtn = document.getElementById('refresh-btn');
         if (refreshBtn) {
             refreshBtn.addEventListener('click', () => {
-                refreshBtn.textContent = '↻';
+                refreshBtn.innerHTML = '<i data-lucide="rotate-cw" class="icon-lucide"></i>';
+                if (window.lucide) lucide.createIcons();
                 const url = new URL(window.location.href);
                 url.searchParams.set('t', Date.now().toString());
                 window.location.replace(url.toString());
             });
+        }
+
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('slrg_theme') || 'dark';
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            updateThemeIcon('light');
+        }
+
+        function updateThemeIcon(theme) {
+            if (!themeToggleBtn) return;
+            themeToggleBtn.innerHTML = theme === 'light'
+                ? '<i id="theme-icon" data-lucide="moon" class="icon-lucide"></i>'
+                : '<i id="theme-icon" data-lucide="sun" class="icon-lucide"></i>';
+            if (window.lucide) lucide.createIcons();
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('slrg_theme', newTheme);
+                updateThemeIcon(newTheme);
+                if (typeof gtag === 'function') {
+                    gtag('event', 'theme_change', { theme: newTheme });
+                }
+            });
+        }
+
+        // Initialize all Lucide icons on start
+        if (window.lucide) {
+            lucide.createIcons();
         }
     </script>
 

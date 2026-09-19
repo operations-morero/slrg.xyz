@@ -162,7 +162,7 @@ body {
     border: none;
     color: var(--text-color);
     font-family: var(--font-mono);
-    font-size: 20px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
     padding: 0 4px;
@@ -187,16 +187,74 @@ body {
 }
 
 .header-theme-btn {
-    font-size: 24px;
+    padding: 0 2px;
 }
 
 .header-coffee-btn {
-    font-size: 16px;
     opacity: 0.85;
 }
 
 .header-coffee-btn:hover {
     opacity: 1;
+}
+
+/* LUCIDE ICONS UNIFIED SYSTEM */
+.icon-lucide {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.2;
+    stroke: currentColor;
+    fill: none;
+    vertical-align: middle;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.header-action-btn .icon-lucide {
+    width: 15px;
+    height: 15px;
+}
+
+.header-theme-btn .icon-lucide {
+    width: 16px;
+    height: 16px;
+}
+
+.header-coffee-btn .icon-lucide {
+    width: 14px;
+    height: 14px;
+}
+
+.nav-back-btn .icon-lucide {
+    width: 16px;
+    height: 16px;
+}
+
+.audio-deck-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-deck-btn .icon-lucide {
+    width: 11px;
+    height: 11px;
+    stroke-width: 2.5;
+}
+
+.article-date.draft-lock {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.article-date.draft-lock .icon-lucide,
+.icon-lock {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent-red) !important;
+    color: var(--accent-red) !important;
+    stroke-width: 2.2;
 }
 
 /* Collapsible Hero Section */
