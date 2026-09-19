@@ -746,6 +746,7 @@ body {
     text-align: left;
 }
 
+.footer-action-btn,
 .footer-refresh-btn {
     background: transparent;
     border: none;
@@ -757,19 +758,23 @@ body {
     justify-content: center;
     line-height: 1;
     opacity: 0.85;
-    transition: color 0.15s ease, transform 0.25s ease, opacity 0.15s ease;
+    transition: color 0.15s ease, transform 0.2s ease, opacity 0.15s ease;
     flex-shrink: 0;
 }
 
+.footer-action-btn:hover,
 .footer-refresh-btn:hover {
     color: var(--accent-green);
     opacity: 1;
+    transform: translateY(-2px);
 }
 
+.footer-action-btn:active,
 .footer-refresh-btn:active {
-    transform: rotate(180deg) scale(0.9);
+    transform: translateY(-3px) scale(0.9);
 }
 
+.footer-action-btn .icon-lucide,
 .footer-refresh-btn .icon-lucide {
     width: 13px;
     height: 13px;

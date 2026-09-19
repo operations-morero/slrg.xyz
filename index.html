@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=52">
+    <link rel="stylesheet" href="styles.css?v=53">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V56MF1NBR6"></script>
@@ -191,8 +191,8 @@
         <!-- FOOTER CARD (CONSISTENT ACROSS ENTIRE SITE) -->
         <footer class="brutalist-card panel-footer">
             <span class="footer-status">DIGITAL BLACKHOLE // ALL RIGHTS RECLAIMED.</span>
-            <!-- Interactive Refresh Button (Lucide rotate-cw) -->
-            <button id="refresh-btn" class="footer-refresh-btn" aria-label="Refresh and reload articles"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="icon-lucide"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></button>
+            <!-- Interactive Scroll To Top Button (Lucide arrow-up) -->
+            <button id="scroll-top-btn" class="footer-action-btn" aria-label="Scroll to top"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="icon-lucide"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></button>
         </footer>
 
     </div>
@@ -589,14 +589,20 @@
             });
         }
 
-        // Handle Refresh / Sync Button Click (Cache-busting reload)
-        const refreshBtn = document.getElementById('refresh-btn');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => {
-                refreshBtn.innerHTML = LUCIDE_ICONS.rotateCw;
-                const url = new URL(window.location.href);
-                url.searchParams.set('t', Date.now().toString());
-                window.location.replace(url.toString());
+        // Handle Scroll to Top Button Click
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        if (scrollTopBtn) {
+            scrollTopBtn.addEventListener('click', () => {
+                const listContainer = document.getElementById('articles-list-view');
+                const detailBodyContainer = document.getElementById('detail-body-text');
+                const detailContainer = document.getElementById('article-detail-view');
+
+                if (detailContainer && !detailContainer.classList.contains('hidden')) {
+                    if (detailBodyContainer) detailBodyContainer.scrollTo({ top: 0, behavior: 'smooth' });
+                } else if (listContainer) {
+                    listContainer.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
