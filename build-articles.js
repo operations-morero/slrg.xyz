@@ -130,6 +130,8 @@ function syncAndBuild() {
     console.log(`📄 Compiled ${articles.length} article(s).`);
 
     // 3. Generate HTML Archive list
+    const lockSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="icon-lucide icon-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+
     const listHtml = articles.map(art => {
         const isDraft = art.status === 'draft';
         if (isDraft) {
@@ -137,7 +139,7 @@ function syncAndBuild() {
                     <article class="article-item is-draft" data-article-id="${art.id}">
                         <div class="article-title-row">
                             <h2 class="article-title">${art.title}</h2>
-                            <span class="article-date draft-lock"><i data-lucide="lock" class="icon-lucide icon-lock"></i></span>
+                            <span class="article-date draft-lock">${lockSvg}</span>
                         </div>
                         <p class="article-desc">${art.summary}</p>
                     </article>`;

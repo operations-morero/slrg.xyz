@@ -7,15 +7,15 @@
 
 /* 1. DUAL-THEME VARIABLES */
 :root {
-    /* Light Mode */
-    --bg-color: #ffffff;
-    --text-color: #050505;
-    --border-color: #000000;
-    --card-bg: #ffffff;
-    --muted-color: #555555;
+    /* Default Dark Mode */
+    --bg-color: #111111;
+    --text-color: #f7f7f7;
+    --border-color: #ffffff;
+    --card-bg: #111111;
+    --muted-color: #aaaaaa;
     
     --accent-green: #009B3A; /* Jamaican Flag Green */
-    --accent-red: #d32f2f;   /* Raw Brutalist Red for Drafts/Coming Soon */
+    --accent-red: #ff4d4d;   /* Raw Brutalist Red for Drafts/Coming Soon */
     --border-width: 2.5px;
     --shadow-size: 6px;
     
@@ -24,8 +24,24 @@
     --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* Light Mode */
+:root[data-theme="light"],
+html[data-theme="light"],
+body[data-theme="light"],
+body.light-mode {
+    --bg-color: #ffffff;
+    --text-color: #050505;
+    --border-color: #000000;
+    --card-bg: #ffffff;
+    --muted-color: #555555;
+    --accent-red: #d32f2f;
+}
+
 /* Dark Mode */
-.dark-mode {
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.dark-mode {
     --bg-color: #111111;
     --text-color: #f7f7f7;
     --border-color: #ffffff;
@@ -292,9 +308,9 @@ body {
 .hero-title {
     font-family: var(--font-sans);
     font-size: 13px;
-    font-weight: 400;
-    color: var(--text-color);
-    opacity: 0.88;
+    font-weight: 500;
+    color: var(--accent-green);
+    opacity: 0.95;
     line-height: 1.5;
 }
 
