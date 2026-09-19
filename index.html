@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>slrg.xyz // Spatial Reasoning</title>
     <!-- CACHE BUSTER BUMPED TO FORCE IMMEDIATE UPDATE -->
-    <link rel="stylesheet" href="styles.css?v=38">
+    <link rel="stylesheet" href="styles.css?v=48">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V56MF1NBR6"></script>
@@ -25,14 +25,24 @@
         <!-- PANEL 1: INTEGRATED HEADER & HERO CARD (Collapsible) -->
         <header id="main-header" class="brutalist-card panel-header">
             
-            <!-- TOP BAR: Logo, Tagline, Theme Toggle -->
+            <!-- TOP BAR: Logo, Tagline, Theme Toggle & Coffee Action -->
             <div class="header-top-bar">
                 <div class="logo-group">
                     <div id="site-logo" class="logo" role="button" tabindex="0" aria-label="Return to home archive">SLRG.XYZ</div>
                     <div class="tagline">[ SPATIAL REASONING + AI SLURGE ]</div>
                 </div>
-                <!-- Interactive Theme Toggle Button -->
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">[ ☼ ]</button>
+                <div class="header-actions">
+                    <div class="header-actions-row">
+                        <!-- Interactive Refresh Button -->
+                        <button id="refresh-btn" class="header-action-btn" aria-label="Refresh and reload articles">⟳</button>
+                        <!-- Interactive Theme Toggle Button -->
+                        <button id="theme-toggle" class="header-action-btn header-theme-btn" aria-label="Toggle Theme">☼</button>
+                    </div>
+                    <div class="header-actions-subrow">
+                        <!-- Buy Me a Coffee / Support Icon -->
+                        <a id="coffee-btn" href="https://buymeacoffee.com/slrg" target="_blank" rel="noopener noreferrer" class="header-action-btn header-coffee-btn" aria-label="Buy Me a Coffee">☕</a>
+                    </div>
+                </div>
             </div>
 
             <!-- COLLAPSIBLE HERO SECTION -->
@@ -74,6 +84,66 @@
                         <h2 class="article-title">02 // The Four Burners Theory</h2>
                         <p class="article-desc">Life took a turn and all my burners went out this year. Outside my bubble it looked like the best time of my life. That was also a lie.</p>
                     </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 03 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="03">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">#TRAUMA #PERSPECTIVE</span>
+                        </div>
+                        <h2 class="article-title">03 // New Height Trauma</h2>
+                        <p class="article-desc">Processing the psychological impact of elevation, vertigo, and structural boundaries.</p>
+                    </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 04 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="04">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">#SYSTEMS #COGNITION</span>
+                        </div>
+                        <h2 class="article-title">04 // Existential Problem Solving</h2>
+                        <p class="article-desc">Deconstructing core paradoxes and resolving paralysis through structural elimination.</p>
+                    </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 05 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="05">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">#CULTURE #IDENTITY</span>
+                        </div>
+                        <h2 class="article-title">05 // What's Lewculture Anyway?</h2>
+                        <p class="article-desc">Deconstructing the origins, language, and ethos behind Lewculture.</p>
+                    </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 06 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="06">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">#SYSTEMS #SYNTHESIS</span>
+                        </div>
+                        <h2 class="article-title">06 // Hello World</h2>
+                        <p class="article-desc">Rebooting the interface, stripping the static, and making first contact with a clean slate.</p>
+                    </article>
+
+                    <div class="article-divider"></div>
+
+                    <!-- ARTICLE 07 (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="07">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">#PSYCHOLOGY #SYSTEMS</span>
+                        </div>
+                        <h2 class="article-title">07 // A Self-Destroying Prophecy</h2>
+                        <p class="article-desc">Anticipating the collapse, engineering the safeguards, and watching the predicted failure dismantle itself.</p>
+                    </article>
                 </div>
             </div>
 
@@ -83,7 +153,7 @@
                 <!-- STICKY HEADER (STAYS FIXED WHILE BODY SCROLLS) -->
                 <div class="detail-sticky-header">
                     <div class="detail-header-nav">
-                        <button id="back-btn" class="nav-back-btn">[ &lt; BACK TO ARCHIVE ]</button>
+                        <button id="back-btn" class="nav-back-btn" aria-label="Back to archive">←</button>
                         
                         <!-- BRUTALIST AUDIO CONTROLS (OLD SCHOOL RETRO TAPE DECK) -->
                         <div class="audio-deck-pill">
@@ -118,8 +188,7 @@
 
         <!-- FOOTER CARD (CONSISTENT ACROSS ENTIRE SITE) -->
         <footer class="brutalist-card panel-footer">
-            <span class="footer-status">DIGITAL ARCHIVE // ALL RIGHTS RECLAIMED.</span>
-            <span class="footer-coords">[ 90.0000° N, 0.0000° E ]</span>
+            <span class="footer-status">DIGITAL BLACKHOLE // ALL RIGHTS RECLAIMED.</span>
         </footer>
 
     </div>
@@ -136,11 +205,11 @@
             if (theme === 'dark') {
                 htmlElement.classList.add('dark-mode');
                 htmlElement.style.colorScheme = 'dark';
-                themeToggleBtn.textContent = '[ ☽ ]';
+                themeToggleBtn.textContent = '☽';
             } else {
                 htmlElement.classList.remove('dark-mode');
                 htmlElement.style.colorScheme = 'light';
-                themeToggleBtn.textContent = '[ ☼ ]';
+                themeToggleBtn.textContent = '☼';
             }
         }
 
@@ -225,6 +294,61 @@
                     <p>Gas isn't sustainable anyways. It's volatile, it flares up, and it runs out when you need it most. IRL I'll be moving to electric, but the underlying principle will always be the exact same: you have a finite energy. If you try to pull maximum wattage across four heavy elements at the same time, you trip the main breaker.</p>
 
                     <p>Turning off a burner isn't failure—it's physics. You acknowledge the season you're in, manage the load, and stop apologizing for cutting the heat to what doesn't need to cook.</p>
+                `
+            },
+            "03": {
+                title: "03 // New Height Trauma",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T09:00:00Z",
+                tags: ["#TRAUMA","#PERSPECTIVE"],
+                content: `
+                    <p>Elevation changes the equation. When you step beyond standard thresholds, your sensory system recalibrates or overloads under the sheer scale of the drop.</p>
+
+                    <p>Trauma at new heights isn't merely fear; it's a spatial disorientation where reference points dissolve and your internal balance must rebuild from the ground up.</p>
+                `
+            },
+            "04": {
+                title: "04 // Existential Problem Solving",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T09:00:00Z",
+                tags: ["#SYSTEMS","#COGNITION"],
+                content: `
+                    <p>When complex questions have no obvious answers, cognitive looping begins. The brain searches for clean logic in a space defined by uncertainty.</p>
+
+                    <p>Existential problem solving requires stripping away superfluous variables. You don't solve the entire abyss—you anchor one structural beam at a time until the foundation holds.</p>
+                `
+            },
+            "05": {
+                title: "05 // What's Lewculture Anyway?",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T09:25:00Z",
+                tags: ["#CULTURE","#IDENTITY"],
+                content: `
+                    <p>Culture isn't something manufactured in a boardroom or dictated by trend cycles. It's the residual pattern left behind by raw experiences, shared instincts, and how we navigate the noise.</p>
+
+                    <p>Lewculture is an unfiltered lens—stripping away performative layers to focus on genuine expression, creative autonomy, and reclaiming individual bandwidth.</p>
+                `
+            },
+            "06": {
+                title: "06 // Hello World",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T09:37:00Z",
+                tags: ["#SYSTEMS","#SYNTHESIS"],
+                content: `
+                    <p>Every system starts with a simple transmission: Hello World. Before the complexity, before the stacked logic and sensory friction, there is just a single clean pulse verifying that the circuit is alive.</p>
+
+                    <p>This is the reboot. Stepping out of cognitive overload and initiating a new dialogue on our own terms.</p>
+                `
+            },
+            "07": {
+                title: "07 // A Self-Destroying Prophecy",
+                date: "2026.09.19",
+                timestamp: "2026-09-19T09:37:00Z",
+                tags: ["#PSYCHOLOGY","#SYSTEMS"],
+                content: `
+                    <p>A self-fulfilling prophecy creates the outcome it expects; a self-destroying prophecy anticipates the disaster so intensely that it forces the architecture to adapt and nullify the threat before impact.</p>
+
+                    <p>When you spend your life managing hyper-vigilance and pattern recognition, you don't wait for systems to fail—you map every fault line in advance and build the counter-weights into the bedrock.</p>
                 `
             }
         };
@@ -439,6 +563,17 @@
             });
         });
 
+        // Handle locked / draft item click (brutalist red flash, stays on archive)
+        document.querySelectorAll('.article-item.is-draft').forEach(item => {
+            item.addEventListener('click', function() {
+                if (this.classList.contains('item-locked-blinking')) return;
+                this.classList.add('item-locked-blinking');
+                setTimeout(() => {
+                    this.classList.remove('item-locked-blinking');
+                }, 250);
+            });
+        });
+
         // Function to return to home archive
         function returnToHome() {
             stopAudio();
@@ -451,11 +586,11 @@
         // Handle Back Button & Hero Expand
         backBtn.addEventListener('click', () => {
             stopAudio();
-            backBtn.textContent = '[ LOADING... ]';
+            backBtn.textContent = '…';
             setTimeout(() => {
-                backBtn.textContent = '[ < BACK TO ARCHIVE ]';
+                backBtn.textContent = '←';
                 returnToHome();
-            }, 100);
+            }, 80);
         });
 
         // Handle Site Logo click to return to home
@@ -467,6 +602,17 @@
                     e.preventDefault();
                     returnToHome();
                 }
+            });
+        }
+
+        // Handle Refresh / Sync Button Click (Cache-busting reload)
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                refreshBtn.textContent = '↻';
+                const url = new URL(window.location.href);
+                url.searchParams.set('t', Date.now().toString());
+                window.location.replace(url.toString());
             });
         }
     </script>

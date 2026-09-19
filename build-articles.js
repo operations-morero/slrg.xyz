@@ -14,6 +14,10 @@ const GDRIVE_PATH = 'G:\\My Drive\\Personal\\SLRG Articles';
 const LOCAL_ARTICLES_PATH = path.join(__dirname, 'articles');
 const INDEX_HTML_PATH = path.join(__dirname, 'index.html');
 
+function fileIsInstructions(f) {
+    return f.toUpperCase().includes('INSTRUCTION');
+}
+
 function parseMarkdownFile(filePath) {
     const rawContent = fs.readFileSync(filePath, 'utf8');
     const match = rawContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
@@ -87,6 +91,7 @@ function parseMarkdownFile(filePath) {
         timestamp: meta.timestamp || new Date().toISOString(),
         tags: Array.isArray(meta.tags) ? meta.tags.slice(0, 2) : [],
         summary: meta.summary || '',
+        status: meta.status ? meta.status.toLowerCase() : (meta.draft === true || meta.draft === 'true' ? 'draft' : 'published'),
         content: htmlContent
     };
 }
@@ -98,7 +103,9 @@ function syncAndBuild() {
     if (fs.existsSync(GDRIVE_PATH)) {
         const gdriveFiles = fs.readdirSync(GDRIVE_PATH);
         for (const file of gdriveFiles) {
-            if (file.endsWith('.md') && !file.startsWith('_') && !file.includes('INSTRUCTIONS')) {
+            if (file.endsWith('.gdoc')) {
+                console.warn(`  ⚠️ Note: ${file} is a Google Doc link. To include it, download or export it as a .md file.`);
+            } else if (file.endsWith('.md') && !file.startsWith('_') && !file.includes('INSTRUCTIONS')) {
                 const src = path.join(GDRIVE_PATH, file);
                 const dest = path.join(LOCAL_ARTICLES_PATH, file);
                 fs.copyFileSync(src, dest);
@@ -111,7 +118,7 @@ function syncAndBuild() {
 
     // 2. Read all local markdown articles
     const files = fs.readdirSync(LOCAL_ARTICLES_PATH)
-        .filter(f => f.endsWith('.md') && !f.startsWith('_') && !f.includes('INSTRUCTIONS'))
+        .filter(f => f.endsWith('.md') && !f.startsWith('_') && !fileIsInstructions(f))
         .sort();
 
     const articles = [];
@@ -125,6 +132,18 @@ function syncAndBuild() {
     // 3. Generate HTML Archive list
     const listHtml = articles.map(art => {
         const tagsPreview = art.tags.join(' ');
+        const isDraft = art.status === 'draft';
+        if (isDraft) {
+            return `                    <!-- ARTICLE ${art.id} (LOCKED DRAFT) -->
+                    <article class="article-item is-draft" data-article-id="${art.id}">
+                        <div class="article-header-row">
+                            <span class="article-date draft-date">🔒 LOCKED</span>
+                            <span class="article-tags-preview">${tagsPreview}</span>
+                        </div>
+                        <h2 class="article-title">${art.title}</h2>
+                        <p class="article-desc">${art.summary}</p>
+                    </article>`;
+        }
         return `                    <!-- ARTICLE ${art.id} -->
                     <article class="article-item selectable" data-article-id="${art.id}">
                         <div class="article-header-row">

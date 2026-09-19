@@ -15,6 +15,7 @@
     --muted-color: #555555;
     
     --accent-green: #009B3A; /* Jamaican Flag Green */
+    --accent-red: #d32f2f;   /* Raw Brutalist Red for Drafts/Coming Soon */
     --border-width: 2.5px;
     --shadow-size: 6px;
     
@@ -30,6 +31,7 @@
     --border-color: #ffffff;
     --card-bg: #111111;
     --muted-color: #aaaaaa;
+    --accent-red: #ff4d4d;
 }
 
 /* 2. BASE VIEWPORT LOCK */
@@ -134,22 +136,67 @@ body {
     white-space: nowrap;
 }
 
-.theme-toggle-btn {
+.header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.header-actions-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions-subrow {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: -2px;
+}
+
+.header-action-btn {
     background: transparent;
     border: none;
     color: var(--text-color);
     font-family: var(--font-mono);
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
-    padding: 2px 4px;
+    padding: 0 4px;
+    line-height: 1;
     outline: none;
-    white-space: nowrap; /* Prevents [ ☼ ] / [ ☽ ] wrapping on mobile */
+    white-space: nowrap;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: color 0.15s ease, transform 0.15s ease;
 }
 
-.theme-toggle-btn:hover {
+.header-action-btn:hover {
     color: var(--accent-green);
+    text-decoration: none;
+}
+
+.header-action-btn:active {
+    transform: scale(0.90);
+}
+
+.header-theme-btn {
+    font-size: 24px;
+}
+
+.header-coffee-btn {
+    font-size: 16px;
+    opacity: 0.85;
+}
+
+.header-coffee-btn:hover {
+    opacity: 1;
 }
 
 /* Collapsible Hero Section */
@@ -279,7 +326,8 @@ body {
     transition: background-color 0.1s ease;
 }
 
-.article-item.selectable {
+.article-item.selectable,
+.article-item.is-draft {
     cursor: pointer;
 }
 
@@ -288,6 +336,14 @@ body {
     color: #ffffff !important;
 }
 .article-item.item-blinking * {
+    color: #ffffff !important;
+}
+
+.article-item.item-locked-blinking {
+    background-color: var(--accent-red) !important;
+    color: #ffffff !important;
+}
+.article-item.item-locked-blinking * {
     color: #ffffff !important;
 }
 
@@ -306,6 +362,22 @@ body {
     color: var(--accent-green);
     letter-spacing: 0.5px;
     white-space: nowrap;
+}
+
+@keyframes strobe-red {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
+}
+
+.article-date.draft-date {
+    color: var(--accent-red) !important;
+    animation: strobe-red 1.8s infinite ease-in-out;
+    letter-spacing: 0.8px;
+    user-select: none;
 }
 
 .article-tags-preview {
@@ -330,17 +402,12 @@ body {
     font-size: 13px;
     line-height: 1.45;
     color: var(--text-color);
-    opacity: 0.82;
+    opacity: 0.85;
 }
 
-/* MATCHING DASHED ARTICLE LIST DIVIDER */
+/* HIDE DASHED ARTICLE LIST DIVIDER (MAINTAIN CLEAN GAP SPACING) */
 .article-divider {
-    height: 1.5px;
-    background: repeating-linear-gradient(to right, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
-    border: none;
-    opacity: 0.35;
-    width: 100%;
-    margin-top: 6px;
+    display: none;
 }
 
 /* --- DETAIL VIEW (STICKY HEADER + SCROLLABLE BODY) --- */
@@ -384,20 +451,29 @@ body {
 .nav-back-btn {
     background: transparent;
     border: none;
-    padding: 0;
-    color: var(--accent-green);
+    padding: 0 4px;
+    color: var(--text-color);
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 20px;
     font-weight: 700;
     cursor: pointer;
-    letter-spacing: 0.5px;
     outline: none;
     white-space: nowrap;
     flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: color 0.15s ease, transform 0.15s ease;
 }
 
 .nav-back-btn:hover {
-    text-decoration: underline;
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
+.nav-back-btn:active {
+    transform: scale(0.90);
 }
 
 /* BRUTALIST AUDIO CONTROLS (WRAPPED IN SINGLE BRACKETS) */
@@ -582,7 +658,7 @@ body {
    ========================================================================= */
 .panel-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-family: var(--font-mono);
     font-size: 10px;
@@ -591,15 +667,14 @@ body {
     opacity: 0.75;
     flex-shrink: 0;
     padding: 10px 16px;
-    gap: 8px;
+    letter-spacing: 0.5px;
 }
 
-.footer-status,
-.footer-coords {
+.footer-status {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-shrink: 0;
+    text-align: center;
 }
 
 /* ==========================================================================
