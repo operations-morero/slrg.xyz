@@ -10,47 +10,58 @@
 const fs = require('fs');
 const path = require('path');
 
-const GDRIVE_PATH = 'G:\\My Drive\\Personal\\SLRG Articles';
+const GDRIVE_SEARCH_PATHS = [
+    'G:\\My Drive\\slrg',
+    'G:\\My Drive\\slrg\\articles',
+    'G:\\My Drive\\Personal\\SLRG Articles',
+    'G:\\My Drive\\slrg.xyz'
+];
 const LOCAL_ARTICLES_PATH = path.join(__dirname, 'articles');
 const INDEX_HTML_PATH = path.join(__dirname, 'index.html');
 
 function fileIsInstructions(f) {
-    return f.toUpperCase().includes('INSTRUCTION');
+    const upper = f.toUpperCase();
+    return upper.includes('INSTRUCTION') || upper.startsWith('GEMINI');
 }
 
 function parseMarkdownFile(filePath) {
     const rawContent = fs.readFileSync(filePath, 'utf8');
     const match = rawContent.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/);
 
-    if (!match) {
-        console.warn(`[WARN] Skipping ${path.basename(filePath)}: Missing YAML frontmatter.`);
-        return null;
-    }
-
-    const frontmatterRaw = match[1];
-    const bodyRaw = match[2].trim();
-
-    // Parse simple frontmatter
     const meta = {};
-    const lines = frontmatterRaw.split(/\r?\n/);
-    let currentKey = null;
+    let bodyRaw = rawContent.trim();
 
-    for (const line of lines) {
-        const tagMatch = line.match(/^\s*-\s*["']?([^"']+)["']?/);
-        if (tagMatch && currentKey) {
-            if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
-            meta[currentKey].push(tagMatch[1]);
-            continue;
-        }
+    if (match) {
+        const frontmatterRaw = match[1];
+        bodyRaw = match[2].trim();
 
-        const kvMatch = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
-        if (kvMatch) {
-            currentKey = kvMatch[1];
-            let val = kvMatch[2].trim();
-            if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
-            if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
-            meta[currentKey] = val;
+        // Parse simple frontmatter
+        const lines = frontmatterRaw.split(/\r?\n/);
+        let currentKey = null;
+
+        for (const line of lines) {
+            const tagMatch = line.match(/^\s*-\s*["']?([^"']+)["']?/);
+            if (tagMatch && currentKey) {
+                if (!Array.isArray(meta[currentKey])) meta[currentKey] = [];
+                meta[currentKey].push(tagMatch[1]);
+                continue;
+            }
+
+            const kvMatch = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
+            if (kvMatch) {
+                currentKey = kvMatch[1];
+                let val = kvMatch[2].trim();
+                if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
+                if (val.startsWith("'") && val.endsWith("'")) val = val.slice(1, -1);
+                meta[currentKey] = val;
+            }
         }
+    } else {
+        // Fallback: extract title from first line or header
+        const lines = bodyRaw.split(/\r?\n/);
+        const titleLine = lines.find(l => l.startsWith('# ')) || lines[0] || 'UNTITLED';
+        meta.title = titleLine.replace(/^#+\s*/, '').trim();
+        bodyRaw = lines.filter(l => l !== titleLine).join('\n').trim();
     }
 
     // Process body paragraphs
@@ -84,36 +95,46 @@ function parseMarkdownFile(filePath) {
         htmlContent += `\n\n                    <div class="article-source-bar">\n                        <a href="${detectedSourceLink}" target="_blank" rel="noopener noreferrer" class="article-source-link">${displayTitle}</a>\n                    </div>`;
     }
 
+    const filenameBase = path.basename(filePath, '.md');
     return {
-        id: meta.id || path.basename(filePath, '.md'),
-        title: meta.title || 'UNTITLED',
-        date: meta.date || '2026.09.18',
+        id: meta.id || filenameBase.match(/^\d+/)?.[0] || filenameBase,
+        title: meta.title || filenameBase.replace(/[-_]/g, ' ').toUpperCase(),
+        date: meta.date || new Date().toISOString().slice(0, 10).replace(/-/g, '.'),
         timestamp: meta.timestamp || new Date().toISOString(),
         tags: Array.isArray(meta.tags) ? meta.tags.slice(0, 2) : [],
-        summary: meta.summary || '',
+        summary: meta.summary || rawParagraphs[0]?.slice(0, 160) || '',
         status: meta.status ? meta.status.toLowerCase() : (meta.draft === true || meta.draft === 'true' ? 'draft' : 'published'),
         content: htmlContent
     };
 }
 
 function syncAndBuild() {
-    console.log('🔄 Checking Google Drive drafts...');
+    console.log('🔄 Checking Google Drive drafts in G:\\My Drive\\slrg ...');
 
-    // 1. Sync from Google Drive if accessible
-    if (fs.existsSync(GDRIVE_PATH)) {
-        const gdriveFiles = fs.readdirSync(GDRIVE_PATH);
-        for (const file of gdriveFiles) {
-            if (file.endsWith('.gdoc')) {
-                console.warn(`  ⚠️ Note: ${file} is a Google Doc link. To include it, download or export it as a .md file.`);
-            } else if (file.endsWith('.md') && !file.startsWith('_') && !file.includes('INSTRUCTIONS')) {
-                const src = path.join(GDRIVE_PATH, file);
-                const dest = path.join(LOCAL_ARTICLES_PATH, file);
-                fs.copyFileSync(src, dest);
-                console.log(`  ✓ Synced from Google Drive: ${file}`);
+    // 1. Sync from Google Drive locations if accessible
+    let syncedCount = 0;
+    for (const gpath of GDRIVE_SEARCH_PATHS) {
+        if (fs.existsSync(gpath)) {
+            const gdriveFiles = fs.readdirSync(gpath);
+            for (const file of gdriveFiles) {
+                if (file.endsWith('.gdoc')) {
+                    console.warn(`  ⚠️ Note: ${file} is a Google Doc link. Please export or save as a .md file.`);
+                } else if (file.endsWith('.md') && !file.startsWith('_') && !fileIsInstructions(file)) {
+                    const src = path.join(gpath, file);
+                    const dest = path.join(LOCAL_ARTICLES_PATH, file);
+                    try {
+                        const srcStat = fs.statSync(src);
+                        if (!fs.existsSync(dest) || srcStat.mtimeMs > fs.statSync(dest).mtimeMs) {
+                            fs.copyFileSync(src, dest);
+                            console.log(`  ✓ Synced from ${gpath}: ${file}`);
+                            syncedCount++;
+                        }
+                    } catch (e) {
+                        // ignore file locks
+                    }
+                }
             }
         }
-    } else {
-        console.log('  ℹ Google Drive not mounted at default path. Using local articles/ folder.');
     }
 
     // 2. Read all local markdown articles
