@@ -11,10 +11,9 @@ const fs = require('fs');
 const path = require('path');
 
 const GDRIVE_SEARCH_PATHS = [
-    'G:\\My Drive\\slrg',
-    'G:\\My Drive\\slrg\\articles',
-    'G:\\My Drive\\Personal\\SLRG Articles',
-    'G:\\My Drive\\slrg.xyz'
+    'G:\\My Drive\\slrg.xyz',
+    'G:\\My Drive\\slrg.xyz\\articles',
+    'G:\\My Drive\\slrg'
 ];
 const LOCAL_ARTICLES_PATH = path.join(__dirname, 'articles');
 const INDEX_HTML_PATH = path.join(__dirname, 'index.html');

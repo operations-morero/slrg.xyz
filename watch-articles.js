@@ -9,7 +9,7 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const WATCH_DIR = 'G:\\My Drive\\slrg';
+const WATCH_DIR = 'G:\\My Drive\\slrg.xyz';
 const REPO_DIR = __dirname;
 
 console.log('📡 SLRG Auto-Sync Watcher Started...');
