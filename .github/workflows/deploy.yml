@@ -1,0 +1,47 @@
+name: Build & Deploy SLRG.XYZ
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'articles/**'
+      - 'build-articles.js'
+      - 'styles.css'
+  repository_dispatch:
+    types: [ drive_sync, article_update ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Compile Articles
+        run: |
+          node build-articles.js
+
+      - name: Commit & Push Compiled Site
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain index.html) ]]; then
+            git add index.html
+            git commit -m "chore(auto-build): recompile articles from cloud sync [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          else
+            echo "index.html already up to date."
+          fi
